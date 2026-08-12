@@ -9,6 +9,13 @@ export const about_us_Data = {
     title: "Our Vision",
     desc: "To integrate science, sustainability, and innovation in developing environmentally responsible pest management solutions that meet dependable standards and solve real-world challenges.",
   },
+  STQ_Message: {
+    title: "Founder’s Message",
+    name: "Dr. Stelson F. Quadros",
+    msg: `At <strong>SMARK</strong>, <span style="font-family: 'Montserrat', sans-mono; font-weight: 700; color: #2a6d0a;">
+  I Dr. Stelson F. Quadros </span> , believe that the future of pest management lies in science, innovation, education, and sustainability. With decades of experience in pest management, research, training, and technology, my vision is to develop scientifically validated, practical, and responsible solutions that create real-world impact. Through Research, Academy, and Services, SMARK brings together knowledge, innovation, and industry expertise to shape the next generation of pest management and build a safer, healthier, and more sustainable future.`,
+    img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786526968/S_mark/aboutus/Stelson_Sir_Image_sr8ndm.png",
+  },
   our_mission: {
     title: "Our Mission",
     desc: "To develop innovative products, advance scientific research, promote sustainable pest management, strengthen technical skills, and deliver practical solutions through technology and collaboration.",
@@ -57,4 +64,22 @@ export const about_us_Data = {
       "Innovation Aligned with Sustainability and Safety",
     ],
   },
+  certificates: [
+    {
+      title: "ISO_9001_2015",
+      link: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786512379/S_mark/aboutus/certificates/ISO_9001_2015_okflxx.webp",
+    },
+    {
+      title: "ISO_4500_2018",
+      link: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786512379/S_mark/aboutus/certificates/ISO_4500_2018_r28rak.webp",
+    },
+    {
+      title: "ISO_1400_2015",
+      link: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786512378/S_mark/aboutus/certificates/ISO_1400_2015_u3dn20.webp",
+    },
+    {
+      title: "HACCP",
+      link: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786512377/S_mark/aboutus/certificates/HACCP_a8r1wk.webp",
+    },
+  ],
 };

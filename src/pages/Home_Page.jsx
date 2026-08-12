@@ -133,7 +133,7 @@ function Home_Page() {
           pb: 8,
         }}
       >
-        <Container maxWidth="lg" sx={{ px: { xs: 2.5, sm: 4 } }}>
+        <Container maxWidth="lg" sx={{ px: { xs: 2.5, sm: 4 }, pt: 5 }}>
           {/* Who We Are Section */}
           <MotionBox
             variants={fadeInUp}
@@ -146,7 +146,7 @@ function Home_Page() {
               bgcolor: "#ffffff",
               borderRadius: "16px",
               boxShadow: "0 4px 24px rgba(0, 0, 0, 0.06)",
-              border: "1px solid rgba(0, 0, 0, 0.05)",
+              border: "1px solid rgba(0, 0, 0, 0.5)",
               mb: { xs: 5, md: 7 },
             }}
           >

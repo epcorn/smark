@@ -12,6 +12,7 @@ import {
   Typography,
   Chip,
   Divider,
+  Button,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
@@ -89,7 +90,7 @@ function ProductDetails() {
               maxHeight: 500,
               aspectRatio: 16 / 9,
               objectFit: "cover",
-              opacity: 0.6,
+              opacity: 1,
               pointerEvents: "none",
             }}
           />
@@ -493,6 +494,60 @@ function ProductDetails() {
           </MotionBox>
         )}
       </Container>
+      {product?.broachure && (
+        <Box
+          sx={{
+            width: '100%',
+            my: 3,
+          }}
+        >
+          <Typography variant="h4" sx={{ fontWeight: 600, textAlign: 'center', my: 5 }}>
+            Product Guidence
+          </Typography>
+          {/* Embedded PDF Viewer using Google Docs Viewer wrapper */}
+          <Box
+            sx={{
+              mx: "auto",
+              width: '50%',
+              height: { xs: 400, md: 550 },
+              borderRadius: 2,
+              overflow: 'hidden',
+              border: '1px solid #e2e8f0',
+              bgcolor: '#f8fafc',
+            }}
+          >
+            <Box
+              component="iframe"
+              src={`https://docs.google.com/viewer?url=${encodeURIComponent(
+                product.broachure
+              )}&embedded=true`}
+              title={`${product.heading || 'Product'} Brochure`}
+              loading="lazy"
+              sx={{
+                width: '100%',
+                height: '100%',
+                border: 0,
+                display: 'block',
+              }}
+            />
+          </Box>
+
+          {/* Fallback Download / Direct View Button in case browser blocks embed */}
+          <Box sx={{ mt: 1.5, display: 'flex', justifyContent: 'flex-end' }}>
+            <Button
+              component="a"
+              href={product.broachure}
+              target="_blank"
+              rel="noopener noreferrer"
+              size="small"
+              variant="outlined"
+              sx={{ textTransform: 'none', borderRadius: 2 }}
+            >
+              Open PDF in New Tab
+            </Button>
+          </Box>
+        </Box>
+      )}
     </Box>
   );
 }

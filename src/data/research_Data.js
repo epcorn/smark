@@ -3,6 +3,8 @@ export const research_data = {
     "https://res.cloudinary.com/djc8opvcg/image/upload/v1786451161/S_mark/research/Smark_Research_Background_s1rxiy.webp",
   heading: "SMARK RESEARCH",
   tagline: "Science. Innovation. Nature. Impact.",
+  summaryImg:
+    "https://res.cloudinary.com/djc8opvcg/image/upload/v1786451161/S_mark/research/Image_for_research_side_ppkkwh.webp",
   summary:
     "SMark Research is dedicated to developing science-based, innovative, and sustainable solutions for pest management, environmental health, product development, and emerging technologies. Our research approach combines scientific investigation, field experience, nature-inspired concepts, and technological innovation to transform real-world challenges into practical solutions.",
   philosophy: {

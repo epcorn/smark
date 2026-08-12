@@ -1,6 +1,8 @@
 export const products_Data = {
   "botanical-deterrent": {
     ratrid: {
+      broachure:
+        "https://res.cloudinary.com/djc8opvcg/image/upload/v1786524283/S_mark/product%20broachure/Soto_Ratrid_Brochure_vpsbuf.pdf",
       banner:
         "https://res.cloudinary.com/djc8opvcg/image/upload/v1786339065/S_mark/product_bg/Background_Banner_for_Ratrid_Product_mgtzd4.webp",
       heading: "SOTO RatRid",
@@ -94,6 +96,8 @@ export const products_Data = {
       ],
     },
     reptout: {
+      broachure:
+        "https://res.cloudinary.com/djc8opvcg/image/upload/v1786524281/S_mark/product%20broachure/Soto_Reptout_Brochure_awqt9f.pdf",
       banner:
         "https://res.cloudinary.com/djc8opvcg/image/upload/v1786339063/S_mark/product_bg/soto_Reptout_q5gmxp.webp",
       heading: "Soto REPTOUT Repellent",
@@ -187,6 +191,8 @@ export const products_Data = {
       ],
     },
     birdrid: {
+      broachure:
+        "https://res.cloudinary.com/djc8opvcg/image/upload/v1786524270/S_mark/product%20broachure/Soto_Birdrid_Brochure_nrjmtr.pdf",
       banner:
         "https://res.cloudinary.com/djc8opvcg/image/upload/v1786339063/S_mark/product_bg/soto_Birdrid_lykpsc.webp",
       heading: "BirdRid",
@@ -483,6 +489,8 @@ export const products_Data = {
   },
   "pesticides-insecticides": {
     termida: {
+      broachure:
+        "https://res.cloudinary.com/djc8opvcg/image/upload/v1786524271/S_mark/product%20broachure/Termida_brochure_hnzd8x.pdf",
       banner:
         "https://res.cloudinary.com/djc8opvcg/image/upload/v1786442655/S_mark/product_bg/Termida_background_image_w8iaqe.webp",
       heading: "TERMIDA®️ – Professional Termite Control Solution",
@@ -585,6 +593,8 @@ export const products_Data = {
   },
   "monitoring-traps": {
     "cockroach-trap": {
+      broachure:
+        "https://res.cloudinary.com/djc8opvcg/image/upload/v1786524267/S_mark/product%20broachure/cockroach_trap_brochure_ekmsw1.pdf",
       banner:
         "https://res.cloudinary.com/djc8opvcg/image/upload/v1786442654/S_mark/product_bg/Cockroach_Trap_Background_banner_image_1_skd8fn.webp",
       heading: "SOTO Cockroach Trap",
@@ -881,6 +891,8 @@ export const products_Data = {
       ],
     },
     "insect-trapper": {
+      broachure:
+        "https://res.cloudinary.com/djc8opvcg/image/upload/v1786524263/S_mark/product%20broachure/SNAPPER_Electric_Catcher_brochure_wlhjix.pdf",
       banner:
         "https://res.cloudinary.com/djc8opvcg/image/upload/v1786442655/S_mark/product_bg/Snapper_Inect_Trapper_Background_image_fytwys.webp",
       heading: "SNAPPER® Insect Trapper",
@@ -1180,6 +1192,8 @@ export const products_Data = {
   },
   "rodent-management": {
     "rodein-baitstation": {
+      broachure:
+        "https://res.cloudinary.com/djc8opvcg/image/upload/v1786524263/S_mark/product%20broachure/Rodein_Bait_station_brochure_j8xpsb.pdf",
       banner:
         "https://res.cloudinary.com/djc8opvcg/image/upload/v1786442654/S_mark/product_bg/Rodein_Bait_station_background_image_kxfdmt.webp",
       heading: "Rodent Bait Station",
@@ -1634,7 +1648,10 @@ export const products_Data = {
       ],
     },
     "reptout-stand": {
-      banner: "",
+      broachure:
+        "https://res.cloudinary.com/djc8opvcg/image/upload/v1786524276/S_mark/product%20broachure/Reptout_stand_Brochure_fwbw19.pdf",
+      banner:
+        "https://res.cloudinary.com/djc8opvcg/image/upload/v1786442654/S_mark/product_bg/Reptout_stand_background_image_i5ljip.webp",
       heading: "REPTOUT® Stand",
       title: "Advanced Reptile Protection with Vaporizing Technology",
       para1:

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  Container,
-} from "@mui/material";
+import { Box, Card, CardContent, Typography, Container } from "@mui/material";
 import { motion } from "framer-motion";
 import { about_us_Data } from "../data/about_us_Data";
 import { VscLightbulbSparkle } from "react-icons/vsc";
@@ -14,21 +8,37 @@ import { MdBalance } from "react-icons/md";
 import { FaGears } from "react-icons/fa6";
 import { GoGoal } from "react-icons/go";
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
-import { cardPop, containerStagger, fadeInUp, imgAnimation, slideIn } from "../data/motionAnimation";
+import {
+  cardPop,
+  containerStagger,
+  fadeInUp,
+  imgAnimation,
+  slideIn,
+} from "../data/motionAnimation";
+import { SwiperSlide, Swiper } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import FounderMessage from "../components/FounderMessage";
 
 // Array of icons matching core values (with fallback)
 const icons = [
-  VscLightbulbSparkle, GoGoal, IoShieldCheckmarkOutline, FaRegHandshake, MdBalance, FaGears
+  VscLightbulbSparkle,
+  GoGoal,
+  IoShieldCheckmarkOutline,
+  FaRegHandshake,
+  MdBalance,
+  FaGears,
 ];
 
-const vmIcons = [FaRegEye, GoGoal]
+const vmIcons = [FaRegEye, GoGoal];
 
 const MotionBox = motion.create(Box);
 const MotionTypo = motion.create(Typography);
 const MotionCard = motion.create(Card);
 
 // Parent Container Stagger Variant
-
 
 function About_Us() {
   const about = about_us_Data;
@@ -44,8 +54,8 @@ function About_Us() {
         alt="About Us Banner"
         variants={imgAnimation}
         viewport={{ once: true }}
-        initial={'hidden'}
-        whileInView='visible'
+        initial={"hidden"}
+        whileInView="visible"
         sx={{
           height: { xs: 200, sm: 350, md: 450 },
           width: "100%",
@@ -122,6 +132,9 @@ function About_Us() {
           </Box>
         </MotionBox>
 
+        {/* founder message */}
+        <FounderMessage about={about} />
+
         {/* Vision & Mission Section */}
         <MotionBox
           variants={containerStagger}
@@ -133,8 +146,7 @@ function About_Us() {
             gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
             gap: { xs: 3, md: 4 },
             mb: { xs: 6, md: 8 },
-          }}
-        >
+          }}>
           {[about.our_vision, about.our_mission].map((item, index) => {
             const IconComp = vmIcons[index];
 
@@ -143,7 +155,10 @@ function About_Us() {
                 key={index}
                 elevation={0}
                 variants={slideIn}
-                whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(22, 215, 221,0.4)" }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0px 10px 20px rgba(22, 215, 221,0.4)",
+                }}
                 sx={{
                   height: "100%",
                   display: "flex",
@@ -151,8 +166,7 @@ function About_Us() {
                   borderRadius: 3,
                   border: "1px solid #009da3",
                   bgcolor: "background.paper",
-                }}
-              >
+                }}>
                 <CardContent sx={{ p: { xs: 3, sm: 4 }, flexGrow: 1 }}>
                   <Box
                     sx={{
@@ -161,8 +175,7 @@ function About_Us() {
                       color: index % 2 === 0 ? "#06b6d4" : "#81d959",
                       display: "flex",
                       alignItems: "center",
-                    }}
-                  >
+                    }}>
                     {IconComp && <IconComp />}
                   </Box>
 
@@ -172,16 +185,14 @@ function About_Us() {
                       fontWeight: 700,
                       mb: 1.5,
                       color: index % 2 === 0 ? "#0891b2" : "#81d959",
-                    }}
-                  >
+                    }}>
                     {item.title}
                   </MotionTypo>
 
                   <MotionTypo
                     variant="body1"
                     color="text.secondary"
-                    sx={{ lineHeight: 1.6 }}
-                  >
+                    sx={{ lineHeight: 1.6 }}>
                     {item.desc}
                   </MotionTypo>
                 </CardContent>
@@ -252,7 +263,8 @@ function About_Us() {
             }}>
             {about?.core_value?.map((c, i) => {
               // Safe fallback so component never throws an error if array length mismatch
-              const IconComponent = icons[i % icons.length] || VscLightbulbSparkle;
+              const IconComponent =
+                icons[i % icons.length] || VscLightbulbSparkle;
 
               return (
                 <MotionCard
@@ -265,13 +277,14 @@ function About_Us() {
                     borderRadius: 2.5,
                     border: "1px solid #009da3",
                     boxShadow: "0px 2px 10px rgba(22, 215, 221, 0.15)",
-                    transition: "background-color 0.3s ease, box-shadow 0.3s ease",
-                    '&:hover': {
-                      bgcolor: "rgba(129, 217, 89, 0.3)", boxShadow: "0px 2px 10px rgba(22, 215, 221, 0.2)",
-                    }
-                  }}
-                >
-                  <CardContent sx={{ p: 3, }}>
+                    transition:
+                      "background-color 0.3s ease, box-shadow 0.3s ease",
+                    "&:hover": {
+                      bgcolor: "rgba(129, 217, 89, 0.3)",
+                      boxShadow: "0px 2px 10px rgba(22, 215, 221, 0.2)",
+                    },
+                  }}>
+                  <CardContent sx={{ p: 3 }}>
                     <Box sx={{ color: "#22d3ee", fontSize: "3rem", mb: 1.5 }}>
                       <IconComponent />
                     </Box>
@@ -323,13 +336,19 @@ function About_Us() {
                 flexDirection: "column",
                 gap: 2,
               }}>
-              <MotionTypo variant="body1" sx={{ color: "text.primary", lineHeight: 1.7 }}>
+              <MotionTypo
+                variant="body1"
+                sx={{ color: "text.primary", lineHeight: 1.7 }}>
                 {about?.commits?.p1}
               </MotionTypo>
-              <MotionTypo variant="body1" sx={{ color: "text.primary", lineHeight: 1.7 }}>
+              <MotionTypo
+                variant="body1"
+                sx={{ color: "text.primary", lineHeight: 1.7 }}>
                 {about?.commits?.p2}
               </MotionTypo>
-              <MotionTypo variant="body1" sx={{ color: "text.primary", lineHeight: 1.7 }}>
+              <MotionTypo
+                variant="body1"
+                sx={{ color: "text.primary", lineHeight: 1.7 }}>
                 {about?.commits?.p3}
               </MotionTypo>
             </Box>
@@ -349,6 +368,19 @@ function About_Us() {
             />
           </Box>
         </Box>
+        <Swiper
+          modules={[Pagination, Navigation, Autoplay]}
+          navigation={true}
+          spaceBetween={10}
+          slidesPerView={3}
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          pagination={{ clickable: true }}>
+          {about.certificates.map((cert) => (
+            <SwiperSlide key={cert.title}>
+              <img src={cert.link} alt={cert.title} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </Container>
     </Box>
   );

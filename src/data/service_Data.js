@@ -8,13 +8,34 @@ export const service_data = {
     summery:
       "Building conditions can significantly influence pest activity, moisture-related issues, structural deterioration, and overall facility hygiene. <strong>Infrastructure Audit Service</strong> is a professional inspection service designed to identify physical vulnerabilities, moisture problems, water leakage, gaps, cracks, and surface conditions that may require corrective action.<br/> Using <strong>moisture detection equipment, thermal imaging cameras, and detailed visual inspection,</strong> our team evaluates critical areas of the facility and provides documented observations and recommendations.",
     keys: [
-      "Detect Dampness – Identify areas affected by excessive moisture or damp conditions.",
-      "Identify Water Leakage – Locate visible and concealed signs of water seepage and leakage.",
-      "Inspect Structural Gaps – Identify gaps, cracks, openings, and potential pest ingress points.",
-      "Assess Surface Conditions – Examine walls, ceilings, floors, and other surfaces for deterioration.",
-      "Detect Hidden Moisture – Use moisture meters to identify moisture levels that may not be visible.",
-      "Identify Thermal Anomalies – Use thermal imaging to detect temperature variations associated with moisture, leakage, or building abnormalities.",
-      "Support Preventive Maintenance – Provide actionable observations to help address infrastructure vulnerabilities.",
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786513806/S_mark/service/infra/detacted_dampness_h27ksv.png",
+        text: "Detect Dampness – Identify areas affected by excessive moisture or damp conditions.",
+      },
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786513803/S_mark/service/infra/Identify_water_logging_nvw8wj.png",
+        text: "Identify Water Leakage – Locate visible and concealed signs of water seepage and leakage.",
+      },
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786513804/S_mark/service/infra/Inspect_structural_Gaps_ykenvb.png",
+        text: "Inspect Structural Gaps – Identify gaps, cracks, openings, and potential pest ingress points.",
+      },
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786513804/S_mark/service/infra/asses_surface_condition_gzvpwr.png",
+        text: "Assess Surface Conditions – Examine walls, ceilings, floors, and other surfaces for deterioration.",
+      },
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786513803/S_mark/service/infra/detect_mositure_zylr7q.png",
+        text: "Detect Hidden Moisture – Use moisture meters to identify moisture levels that may not be visible.",
+      },
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786513807/S_mark/service/infra/Identify_thermal_inomalis_ankv4w.png",
+        text: "Identify Thermal Anomalies – Use thermal imaging to detect temperature variations associated with moisture, leakage, or building abnormalities.",
+      },
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786513805/S_mark/service/infra/support_preventive_maintence_v05794.png",
+        text: "Support Preventive Maintenance – Provide actionable observations to help address infrastructure vulnerabilities.",
+      },
     ],
     approach: [
       {
@@ -115,6 +136,8 @@ export const service_data = {
     },
   },
   rim: {
+    broachure:
+      "https://res.cloudinary.com/djc8opvcg/image/upload/v1786524264/S_mark/product%20broachure/RIM_service_brochure_tatkhe.pdf",
     banner:
       "https://res.cloudinary.com/djc8opvcg/image/upload/v1786452887/S_mark/service/Rim_background_image_udjfpn.jpg",
     heading: "RIM – Rodent Ingress Management Service",
@@ -123,12 +146,30 @@ export const service_data = {
     summery:
       "Rodent activity often begins with small vulnerabilities—an open drain, structural gap, unsealed utility penetration, damaged door, or accessible food source. <strong>RIM – Rodent Ingress Management</strong> is a preventive rodent management service designed to identify these vulnerabilities, reduce rodent entry opportunities, and establish a systematic monitoring and prevention framework.<br/> RIM combines <strong>professional inspection, ingress identification, rodent-proofing, monitoring, risk assessment, and continuous review</strong> to help facilities stay protected before rodent activity develops into a serious infestation.",
     keys: [
-      "Prevent Rodent Entry – Identify and secure potential rodent ingress points.",
-      "Reduce Infestation Risk – Address conditions that attract and support rodent activity.",
-      "Protect Assets & Infrastructure – Minimize risks to wiring, equipment, stock, and structures.",
-      "Improve Hygiene – Reduce contamination risks associated with rodent movement and droppings.",
-      "Enable Early Detection – Use strategically placed monitoring systems to identify activity at an early stage.",
-      "Support Compliance – Maintain documented inspections, corrective actions, and monitoring records.",
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786515285/S_mark/service/rim/Prevent_Rodent_Entry_hlhfgj.png",
+        text: "Prevent Rodent Entry – Identify and secure potential rodent ingress points.",
+      },
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786515286/S_mark/service/rim/Reduce_Infestation_Risk_asrcuh.png",
+        text: "Reduce Infestation Risk – Address conditions that attract and support rodent activity.",
+      },
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786515288/S_mark/service/rim/Protect_Assets_Infrastructure_f3z5ut.png",
+        text: "Protect Assets & Infrastructure – Minimize risks to wiring, equipment, stock, and structures.",
+      },
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786515287/S_mark/service/rim/Improve_Hygiene_ewx1ng.png",
+        text: "Improve Hygiene – Reduce contamination risks associated with rodent movement and droppings.",
+      },
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786515286/S_mark/service/rim/Enable_Early_Detection_kmxg8y.png",
+        text: "Enable Early Detection – Use strategically placed monitoring systems to identify activity at an early stage.",
+      },
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786515290/S_mark/service/rim/Support_Compliance_efurhb.png",
+        text: "Support Compliance – Maintain documented inspections, corrective actions, and monitoring records.",
+      },
     ],
     approach: [
       {
@@ -157,6 +198,8 @@ export const service_data = {
           "Inspection and monitoring results are regularly reviewed to identify recurring vulnerabilities, recommend corrective actions, and maintain comprehensive service documentation.",
       },
     ],
+    whatweprotectImg:
+      "https://res.cloudinary.com/djc8opvcg/image/upload/v1786523158/S_mark/service/rim/WhatWeHelpProtect_Identify_image_fjxmif.png",
     whatItProtects: [
       {
         title: "Food & Raw Materials",

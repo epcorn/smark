@@ -68,6 +68,20 @@ export const cardPop = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+      when: "beforeChildren",
+      staggerChildren: 0.15,
+    },
   },
+};
+
+export const rtl = {
+  hidden: { x: 50, opacity: 0 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.9, ease: "easeOut" } },
+};
+export const ltr = {
+  hidden: { x: -50, opacity: 0 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.9, ease: "easeOut" } },
 };

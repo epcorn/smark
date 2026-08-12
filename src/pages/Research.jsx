@@ -59,6 +59,7 @@ function Research() {
           gap: { xs: 4, md: 6 },
           pt: { xs: 3, md: 4 },
           pb: { xs: 6, md: 8 },
+          overflow: "hidden",
         }}
       >
         {/* Banner Image Wrapper */}
@@ -167,36 +168,149 @@ function Research() {
               <Paper
                 elevation={0}
                 sx={{
-                  p: 4,
+                  p: { xs: 3, sm: 4 },
                   height: '100%',
                   borderRadius: 3,
                   border: '1px solid #e2e8f0',
                   bgcolor: '#ffffff',
+                  display: 'flex',
+                  flexDirection: 'column',
                 }}
               >
-                <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 2 }}>
-                  <Box sx={{ color: 'primary.main', display: 'flex' }}>
+                {/* Header */}
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  alignItems="center"
+                  sx={{ mb: 2 }}
+                >
+                  <Box
+                    sx={{
+                      color: 'primary.main',
+                      display: 'flex',
+                      alignItems: 'center',
+                      flexShrink: 0,
+                    }}
+                  >
                     <FaFlask size={24} />
                   </Box>
-                  <Typography variant="h5" sx={{ fontWeight: 700 }}>
+
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: 700,
+                      lineHeight: 1.2,
+                    }}
+                  >
                     {scientificValidation.title}
                   </Typography>
                 </Stack>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 3, lineHeight: 1.6 }}>
+
+                {/* Description */}
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{
+                    mb: 3,
+                    lineHeight: 1.6,
+                  }}
+                >
                   {scientificValidation.description}
                 </Typography>
-                <Grid container spacing={1.5}>
-                  {scientificValidation.process.map((item, idx) => (
-                    <Grid item xs={12} sm={6} key={idx}>
-                      <Stack direction="row" spacing={1} alignItems="center">
-                        <FaCircleCheck color="#10b981" size={16} />
-                        <Typography variant="body2" fontWeight={500}>
-                          {item}
-                        </Typography>
-                      </Stack>
-                    </Grid>
-                  ))}
-                </Grid>
+
+                {/* Main Content */}
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: { xs: 3, sm: 4 },
+                    flex: 1,
+
+                    // Mobile
+                    '@media (max-width: 600px)': {
+                      flexDirection: 'column',
+                      alignItems: 'stretch',
+                    },
+                  }}
+                >
+                  {/* Left - Process List */}
+                  <Box
+                    sx={{
+                      flex: 1,
+                      minWidth: 0,
+                    }}
+                  >
+                    <Stack spacing={1.5}>
+                      {scientificValidation.process.map((item, idx) => (
+                        <Box
+                          key={idx}
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            gap: 1.5,
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              flexShrink: 0,
+                              mt: '2px',
+                            }}
+                          >
+                            <FaCircleCheck
+                              color="#10b981"
+                              size={16}
+                            />
+                          </Box>
+
+                          <Typography
+                            variant="body2"
+                            fontWeight={500}
+                            sx={{
+                              lineHeight: 1.5,
+                            }}
+                          >
+                            {item}
+                          </Typography>
+                        </Box>
+                      ))}
+                    </Stack>
+                  </Box>
+
+                  {/* Right - Image */}
+                  <Box
+                    sx={{
+                      width: { xs: '100%', sm: 190, md: 180 },
+                      flexShrink: 0,
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+
+                      '@media (max-width: 600px)': {
+                        width: '100%',
+                      },
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={scientificValidation.img}
+                      alt="Scientific Validation"
+                      sx={{
+                        width: '100%',
+                        maxWidth: { xs: 260, sm: 190, md: 180 },
+                        height: { xs: 180, sm: 190, md: 180 },
+                        objectFit: 'cover',
+                        display: 'block',
+                        borderRadius: 2,
+                        scale: 1.2,
+                        border: '1px solid #e2e8f0',
+                        backgroundColor: '#f8fafc',
+                      }}
+                    />
+                  </Box>
+                </Box>
               </Paper>
             </MotionBox>
           </Grid>
@@ -256,48 +370,70 @@ function Research() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          sx={{
+            position: 'relative',
+            overflow: 'hidden',
+            borderRadius: 3,
+            mb: 8,
+            background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${biomimicking.img}) center/cover no-repeat`,
+          }}
         >
           <Paper
             elevation={0}
             sx={{
-              p: { xs: 4, md: 5 },
-              mb: 8,
+              py: 5,
+              p: { xs: 3, md: 5 },
               borderRadius: 3,
-              bgcolor: '#f0fdf4',
-              border: '1px solid #bbf7d0',
+              background: 'rgba(255, 255, 255, 0.01)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              color: '#ffffff',
             }}
           >
-            <Grid container spacing={3} alignItems="center">
-              <Grid item xs={12} md={8}>
-                <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 1 }}>
-                  <Box sx={{ color: '#16a34a', display: 'flex' }}>
-                    <GiDna1 size={30} />
-                  </Box>
-                  <Typography variant="h4" sx={{ fontWeight: 700, color: '#14532d' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: { xs: 4, md: 10 },
+              }}
+            >
+              {/* Content */}
+              <Box sx={{ flex: 1 }}>
+                <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 5 }}>
+                  <GiDna1 color="#4ade80" size={36} />
+                  <Typography variant="h3" fontWeight={800} sx={{ color: '#ffffff', fontSize: { xs: '2rem', md: '2.5rem' } }}>
                     {biomimicking.title}
                   </Typography>
                 </Stack>
-                <Typography variant="h6" sx={{ color: '#16a34a', mb: 2, fontWeight: 500 }}>
+
+                <Typography variant="h6" sx={{ color: '#86efac', mb: 2, fontWeight: 600 }}>
                   {biomimicking.subtitle}
                 </Typography>
-                <Typography variant="body1" sx={{ color: '#166534', lineHeight: 1.7 }}>
+
+                <Typography sx={{ color: '#f0fdf4', lineHeight: 1.7, fontSize: '1rem' }}>
                   {biomimicking.description}
                 </Typography>
-              </Grid>
-              <Grid item xs={12} md={4} sx={{ textAlign: 'center' }}>
-                <Box
-                  sx={{
-                    display: 'inline-flex',
-                    p: 3,
-                    borderRadius: '50%',
-                    bgcolor: '#dcfce7',
-                    color: '#15803d',
-                  }}
-                >
-                  <FaMicroscope size={60} />
-                </Box>
-              </Grid>
-            </Grid>
+              </Box>
+
+              {/* Icon */}
+              <Box
+                sx={{
+                  flexShrink: 0,
+                  p: 3,
+                  borderRadius: '50%',
+                  background: 'rgba(255,255,255, 0.1)',
+                  backdropFilter: 'blur(2px)',
+                  color: 'lightgreen',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                }}
+              >
+                <FaMicroscope size={50} />
+              </Box>
+            </Box>
           </Paper>
         </MotionBox>
 

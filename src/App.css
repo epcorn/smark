@@ -11,7 +11,7 @@ html {
   
   width: 23ch;  
   animation: 
-    type 2.5s steps(23) forwards, 
+    type 2.5s steps(22) forwards, 
     blink .75s step-end infinite;
 }
 
