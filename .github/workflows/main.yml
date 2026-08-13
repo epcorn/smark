@@ -9,6 +9,7 @@ jobs:
   web-deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
+    environment: Production
 
     steps:
       - name: Checkout Code
@@ -32,4 +33,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: ./public_html/
+          server-dir: ./
