@@ -114,7 +114,7 @@ function TopContactBar() {
           </Stack>
 
           {/* Social Icons */}
-          <Stack direction="row" spacing={1} className='flex items-center'>
+          <Stack direction="row" spacing={1} className='hidden! items-center '>
             <Typography
               variant="caption"
               sx={{
@@ -128,9 +128,9 @@ function TopContactBar() {
             </Typography>
 
             {[
-              { icon: <FaFacebookF />, color: '#1877F2', href: '#' },
-              { icon: <FaInstagram />, color: '#E4405F', href: '#' },
-              { icon: <FaLinkedinIn />, color: '#0A66C2', href: '#' },
+              { icon: <FaFacebookF />, color: '#1877F2', href: '' },
+              { icon: <FaInstagram />, color: '#E4405F', href: '' },
+              { icon: <FaLinkedinIn />, color: '#0A66C2', href: '' },
             ].map((social, idx) => (
               <IconButton
                 key={idx}

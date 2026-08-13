@@ -1,5 +1,6 @@
 import React from 'react'
 import { home_page } from '../data/home_page_Data'
+import { FaEnvelope, FaPhoneAlt } from 'react-icons/fa'
 
 
 function Footer() {
@@ -21,6 +22,7 @@ function Footer() {
                 href={`tel:${home_page.contact}`}
                 className="hover:text-cyan-600 transition-colors duration-200 flex items-center gap-1"
               >
+                <FaPhoneAlt style={{ fontSize: '1.2rem', color: "grey" }} />
                 <span className="font-semibold text-gray-800">Phone:</span>{" "}
                 {home_page.contact}
               </a>
@@ -35,7 +37,8 @@ function Footer() {
                 href={`mailto:${home_page.email}`}
                 className="hover:text-cyan-600 transition-colors duration-200 flex items-center gap-1"
               >
-                <span className="font-semibold text-gray-800">Email:</span>{" "}
+                <FaEnvelope style={{ fontSize: '1.2rem', color: "grey" }} />
+                <span className="font-semibold text-gray-800">Email: </span>{" "}
                 {home_page.email}
               </a>
             )}

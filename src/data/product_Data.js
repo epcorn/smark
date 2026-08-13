@@ -501,7 +501,7 @@ export const products_Data = {
         "Powered by Imidacloprid 30.5% SC, TERMIDA®️ offers advanced residual performance by creating a protective treatment zone around structures. It effectively targets subterranean termites and helps eliminate termite colonies through contact and transfer within the colony.",
       para3:
         "Suitable for both pre-construction and post-construction termite treatments, TERMIDA®️ is widely used by pest management professionals to safeguard buildings against termite infestations while supporting long-term structural protection.",
-      productImg: "",
+      productImg: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786614989/S_mark/product_imgs/Termida_product_m2kbp8.png",
       overview: {
         para1:
           "TERMIDA®️ is a professional-grade Imidacloprid 30.5% SC termiticide developed for comprehensive termite management. Its advanced suspension concentrate formulation provides excellent soil binding, long residual activity, and reliable performance in protecting buildings from subterranean termite attacks.",

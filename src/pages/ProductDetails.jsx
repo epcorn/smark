@@ -202,11 +202,10 @@ function ProductDetails() {
                   objectFit: "contain",
                   // border: "1px solid black",
                   transition: "transform 0.4s ease",
-                  transform: id === "samarth-stick" || id === "lizard-trap" ? "rotate(-90deg)" : "rotate(0deg)",
+                  transform: id === "samarth-stick" ? "rotate(-90deg)" : id === "lizard-trap" ? "rotate(90deg)" : "rotate(0deg)",
                   "&:hover": {
                     transform:
-                      id === "samarth-stick" || id === "lizard-trap"
-                        ? "rotate(-90deg) scale(1.05)"
+                      id === "samarth-stick" ? "rotate(-90deg) scale(1.05)" : id === "lizard-trap" ? "rotate(90deg) scale(1.05)"
                         : "rotate(0deg) scale(1.05)",
                   },
                 }}
