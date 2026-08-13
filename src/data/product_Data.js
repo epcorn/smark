@@ -499,7 +499,7 @@ export const products_Data = {
         'Termites are among the most destructive structural pests, causing extensive damage to wooden structures, furniture, flooring, doors, and building foundations. Often referred to as "silent destroyers," termites can remain undetected for long periods while continuously feeding on cellulose-based materials, resulting in costly repairs and structural deterioration. TERMIDA®️ is a professional termite control solution from SMARK, formulated to provide effective and long-lasting termite protection for residential, commercial, and industrial properties.',
       para2:
         "Powered by Imidacloprid 30.5% SC, TERMIDA®️ offers advanced residual performance by creating a protective treatment zone around structures. It effectively targets subterranean termites and helps eliminate termite colonies through contact and transfer within the colony.",
-      para3:
+      para3: 
         "Suitable for both pre-construction and post-construction termite treatments, TERMIDA®️ is widely used by pest management professionals to safeguard buildings against termite infestations while supporting long-term structural protection.",
       productImg: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786614989/S_mark/product_imgs/Termida_product_m2kbp8.png",
       overview: {
