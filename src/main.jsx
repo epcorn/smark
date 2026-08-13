@@ -9,6 +9,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { createTheme, ThemeProvider, CssBaseline } from '@mui/material' // 1. Added CssBaseline
+import ScrollToTop from './components/ScrollToTop.jsx'
 
 const theme = createTheme({
   components: {
@@ -40,6 +41,7 @@ const theme = createTheme({
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+      <ScrollToTop />
       <ThemeProvider theme={theme}>
         <CssBaseline /> {/* 2. Included here */}
         <App />

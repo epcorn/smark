@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 // Import core Lenis
 import Lenis from 'lenis';
 import Research from './pages/Research';
+import ScrollToTop from './components/ScrollToTop';
 
 
 export function Layout() {
@@ -47,20 +48,22 @@ export function Layout() {
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<Layout />}>
-        <Route index element={<Home_Page />} />
+    // <Router>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home_Page />} />
 
-        {/* services */}
-        <Route path='services/:id' element={<Service_Details />} />
+          {/* services */}
+          <Route path='services/:id' element={<Service_Details />} />
 
-        <Route path='/products/:category/:id' element={<ProductDetails />} />
-        <Route path='/academy' element={<Academy />} />
-        <Route path='/research' element={<Research />} />
-        <Route path='/about_us' element={<About_Us />} />
-      </Route>
-      <Route path='*' element={<Navigate to={'/'} replace />} />
-    </Routes>
+          <Route path='/products/:category/:id' element={<ProductDetails />} />
+          <Route path='/academy' element={<Academy />} />
+          <Route path='/research' element={<Research />} />
+          <Route path='/about_us' element={<About_Us />} />
+        </Route>
+        <Route path='*' element={<Navigate to={'/'} replace />} />
+      </Routes>
+    // </Router>
   );
 }
 

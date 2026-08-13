@@ -30,10 +30,12 @@ import {
   stagger,
 } from "../data/motionAnimation";
 import { motion } from "framer-motion";
+import { saveAs } from 'file-saver';
 
 function Service_Details() {
   const { id } = useParams();
   const service = service_data[id];
+  const pdfUrl = service?.broachure;
 
   const MotionBox = motion.create(Box);
   if (!service) {
@@ -175,27 +177,40 @@ function Service_Details() {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true, amount: 0.2 }}
-                      variants={cardPop}>
+                      variants={cardPop}
+                    >
                       <Stack
                         direction="row"
                         spacing={1.5}
                         alignItems="flex-start"
-                        divider={<Divider orientation="horizontal" flexItem />}>
+                        divider={<Divider orientation="vertical" flexItem />}
+                      >
                         <MotionBox
                           variants={ltr}
                           sx={{
                             color: "primary.main",
                             mt: 0.5,
                             display: "flex",
-                          }}>
+                            alignItems: "center",
+                            /* FIX: Prevent container from shrinking on narrow screens */
+                            flexShrink: 0
+                          }}
+                        >
                           <Box
-                            component={"img"}
+                            component="img"
                             src={key?.icon}
-                            sx={{ height: 100 }}
+                            alt={title || "icon"}
+                            sx={{
+                              /* FIX: Set clear responsive size limits and object-fit */
+                              width: { xs: 40, sm: 50 },
+                              height: { xs: 40, sm: 50 },
+                              objectFit: "contain",
+                              display: "block"
+                            }}
                           />
                         </MotionBox>
 
-                        <MotionBox variants={rtl}>
+                        <MotionBox variants={rtl} sx={{ flexGrow: 1, minWidth: 0 }}>
                           <Typography variant="h6" fontWeight="600">
                             {title}
                           </Typography>
@@ -203,8 +218,9 @@ function Service_Details() {
                           {desc && (
                             <Typography
                               variant="body2"
-                              sx={{ ml: 1 }}
-                              color="text.secondary">
+                              sx={{ mt: 0.5 }}
+                              color="text.secondary"
+                            >
                               {desc}
                             </Typography>
                           )}
@@ -212,6 +228,7 @@ function Service_Details() {
                       </Stack>
                     </MotionBox>
                   </Grid>
+
                 );
               })}
             </Grid>
@@ -419,60 +436,33 @@ function Service_Details() {
         )}
       </Container>
 
-      {service?.broachure && (
-        <Box
-          sx={{
-            width: '100%',
-            my: 3,
-          }}
-        >
-          <Typography variant="h4" sx={{ fontWeight: 600, textAlign: 'center', my: 5 }}>
-            Product Guidence
-          </Typography>
-          {/* Embedded PDF Viewer using Google Docs Viewer wrapper */}
+      {pdfUrl &&
+        <>
           <Box
+            component="iframe"
+            // src={`${pdfUrl}#toolbar=0`}
+            src={`https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}&embedded=true`}
+            title={id}
+            loading="lazy"
             sx={{
+              my: 5,
               mx: "auto",
-              width: '50%',
-              height: { xs: 400, md: 550 },
-              borderRadius: 2,
-              overflow: 'hidden',
-              border: '1px solid #e2e8f0',
-              bgcolor: '#f8fafc',
+              width: { xs: '100%', sm: '80%', md: '500px' },
+              height: { xs: '400px', sm: '500px' },
+              maxWidth: '100%',
+              border: 0,
+              display: 'block',
             }}
-          >
-            <Box
-              component="iframe"
-              src={`https://docs.google.com/viewer?url=${encodeURIComponent(
-                service?.broachure
-              )}&embedded=true`}
-              title={`${service?.heading || 'Product'} Brochure`}
-              loading="lazy"
-              sx={{
-                width: '100%',
-                height: '100%',
-                border: 0,
-                display: 'block',
-              }}
-            />
-          </Box>
-
-          {/* Fallback Download / Direct View Button in case browser blocks embed */}
-          <Box sx={{ mt: 1.5, display: 'flex', justifyContent: 'flex-end' }}>
-            <Button
-              component="a"
-              href={service.broachure}
-              target="_blank"
-              rel="noopener noreferrer"
-              size="small"
-              variant="outlined"
-              sx={{ textTransform: 'none', borderRadius: 2 }}
+          />
+          <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+            <Button variant="contained"
+              onClick={() => saveAs(pdfUrl, `${id}_broachure.pdf`)}
             >
-              Open PDF in New Tab
+              Download PDF
             </Button>
           </Box>
-        </Box>
-      )}
+        </>
+      }
     </Box>
   );
 }

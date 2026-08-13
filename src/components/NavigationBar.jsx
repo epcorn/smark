@@ -93,7 +93,7 @@ function TopContactBar() {
             </MuiLink>
 
             <MuiLink
-              href="tel:+1234567890"
+              href={`tel:+${home_page?.contact}`}
               underline="none"
               sx={{
                 color: 'inherit',

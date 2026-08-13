@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { cardPop, fadeInUp } from '../data/motionAnimation';
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const FounderMessage = ({ about }) => {
   if (!about?.STQ_Message) return null;

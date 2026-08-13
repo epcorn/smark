@@ -42,7 +42,6 @@ function Research() {
     collaboration,
     patentAndInnovation,
   } = research_data;
-  const [filled, setfilled] = useState({ id: "Research", status: false });
 
   const MotionBox = motion.create(Box);
   const MotionTypo = motion.create(Typography);
@@ -488,69 +487,7 @@ function Research() {
         </Box>
 
         {/* Patent & Innovation Journey */}
-        <MotionBox
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <Paper elevation={0} sx={{ p: { xs: 4, md: 5 }, mb: 8, borderRadius: 3, border: '1px solid #e2e8f0' }}>
-            <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 1 }}>
-              <Box sx={{ color: 'primary.main', display: 'flex' }}>
-                <FaDiagramProject size={26} />
-              </Box>
-              <Typography variant="h4" sx={{ fontWeight: 700 }}>
-                {patentAndInnovation.title}
-              </Typography>
-            </Stack>
-            <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 4 }}>
-              {patentAndInnovation.subtitle} – {patentAndInnovation.description}
-            </Typography>
-
-            {/* Workflow Stepper Flow */}
-            <Box sx={{ mb: 4 }}>
-              <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 2, textTransform: 'uppercase', letterSpacing: 0.5 }}>
-                Innovation Pathway
-              </Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, alignItems: 'center' }}>
-                {patentAndInnovation.workflow.map((step, idx) => (
-                  <React.Fragment key={idx}>
-                    <Chip
-                      label={`${idx + 1}. ${step}`}
-                      color="primary"
-                      variant={filled.id === step ? 'filled' : 'outlined'}
-                      sx={{ fontWeight: 600 }}
-                      onClick={() => setfilled({ id: step, status: true })}
-                    />
-                    {idx < patentAndInnovation.workflow.length - 1 && (
-                      <Box sx={{ color: 'text.disabled', display: 'flex' }}>
-                        <FaArrowRight size={12} />
-                      </Box>
-                    )}
-                  </React.Fragment>
-                ))}
-              </Box>
-            </Box>
-
-            <Divider sx={{ my: 3 }} />
-
-            <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 2, textTransform: 'uppercase', letterSpacing: 0.5 }}>
-              Showcase Areas
-            </Typography>
-            <Grid container spacing={1.5}>
-              {patentAndInnovation.showcaseItems.map((item, idx) => (
-                <Grid item xs={12} sm={6} md={4} key={idx}>
-                  <Stack direction="row" spacing={1} alignItems="center">
-                    <FaCircleCheck color="#0284c7" size={14} />
-                    <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                      {item}
-                    </Typography>
-                  </Stack>
-                </Grid>
-              ))}
-            </Grid>
-          </Paper>
-        </MotionBox>
+        <PatentInnovation MotionBox={MotionBox} patentAndInnovation={patentAndInnovation} />
 
         {/* Collaboration CTA Section */}
         <MotionBox
@@ -605,3 +542,72 @@ function Research() {
 }
 
 export default Research;
+
+function PatentInnovation({ MotionBox, patentAndInnovation }) {
+  const [filled, setFilled] = useState({ id: "Research", status: false })
+  return (
+    <MotionBox
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      <Paper elevation={0} sx={{ p: { xs: 4, md: 5 }, mb: 8, borderRadius: 3, border: '1px solid #e2e8f0' }}>
+        <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 1 }}>
+          <Box sx={{ color: 'primary.main', display: 'flex' }}>
+            <FaDiagramProject size={26} />
+          </Box>
+          <Typography variant="h4" sx={{ fontWeight: 700 }}>
+            {patentAndInnovation.title}
+          </Typography>
+        </Stack>
+        <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 4 }}>
+          {patentAndInnovation.subtitle} – {patentAndInnovation.description}
+        </Typography>
+
+        {/* Workflow Stepper Flow */}
+        <Box sx={{ mb: 4 }}>
+          <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 2, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+            Innovation Pathway
+          </Typography>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, alignItems: 'center' }}>
+            {patentAndInnovation.workflow.map((step, idx) => (
+              <React.Fragment key={idx}>
+                <Chip
+                  label={`${idx + 1}. ${step}`}
+                  color="primary"
+                  variant={filled.id === step ? 'filled' : 'outlined'}
+                  sx={{ fontWeight: 600 }}
+                  onClick={() => setFilled({ id: step, status: true })}
+                />
+                {idx < patentAndInnovation.workflow.length - 1 && (
+                  <Box sx={{ color: 'text.disabled', display: 'flex' }}>
+                    <FaArrowRight size={12} />
+                  </Box>
+                )}
+              </React.Fragment>
+            ))}
+          </Box>
+        </Box>
+
+        <Divider sx={{ my: 3 }} />
+
+        <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 2, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+          Showcase Areas
+        </Typography>
+        <Grid container spacing={1.5}>
+          {patentAndInnovation.showcaseItems.map((item, idx) => (
+            <Grid item xs={12} sm={6} md={4} key={idx}>
+              <Stack direction="row" spacing={1} alignItems="center">
+                <FaCircleCheck color="#0284c7" size={14} />
+                <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                  {item}
+                </Typography>
+              </Stack>
+            </Grid>
+          ))}
+        </Grid>
+      </Paper>
+    </MotionBox>
+  )
+}

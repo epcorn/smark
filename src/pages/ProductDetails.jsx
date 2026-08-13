@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import { products_Data } from "../data/product_Data";
 import { fadeUp } from "../data/motionAnimation";
+import { saveAs } from 'file-saver';
 
 const BRAND_GREEN = "rgba(61, 206, 212)";
 const LIGHT_BG = "#F4F9F5";
@@ -47,7 +48,10 @@ const staggerContainer = {
 function ProductDetails() {
   const { id, category } = useParams();
   const product = products_Data?.[category]?.[id];
+  const pdfUrl = product?.broachure
 
+  console.log(products_Data)
+  
   if (!product) {
     return (
       <Box
@@ -264,7 +268,7 @@ function ProductDetails() {
 
         {/* Features Column */}
         {product?.features && (
-          <Grid item xs={12} md={6}>
+          <Grid xs={12} md={6}>
             <MotionBox
               initial="hidden"
               whileInView="visible"
@@ -321,7 +325,7 @@ function ProductDetails() {
             <Box
               sx={{
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr",
+                gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
                 gap: 2,
                 py: 2,
               }}>
@@ -493,60 +497,32 @@ function ProductDetails() {
           </MotionBox>
         )}
       </Container>
-      {product?.broachure && (
-        <Box
-          sx={{
-            width: '100%',
-            my: 3,
-          }}
-        >
-          <Typography variant="h4" sx={{ fontWeight: 600, textAlign: 'center', my: 5 }}>
-            Product Guidence
-          </Typography>
-          {/* Embedded PDF Viewer using Google Docs Viewer wrapper */}
+      {pdfUrl &&
+        <>
           <Box
+            component="iframe"
+            src={`https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}&embedded=true`}
+            title={id}
+            loading="lazy"
             sx={{
+              my: 5,
               mx: "auto",
-              width: '50%',
-              height: { xs: 400, md: 550 },
-              borderRadius: 2,
-              overflow: 'hidden',
-              border: '1px solid #e2e8f0',
-              bgcolor: '#f8fafc',
+              width: { xs: '100%', sm: '80%', md: '500px' },
+              height: { xs: '400px', sm: '500px' },
+              maxWidth: '100%',
+              border: 0,
+              display: 'block',
             }}
-          >
-            <Box
-              component="iframe"
-              src={`https://docs.google.com/viewer?url=${encodeURIComponent(
-                product.broachure
-              )}&embedded=true`}
-              title={`${product.heading || 'Product'} Brochure`}
-              loading="lazy"
-              sx={{
-                width: '100%',
-                height: '100%',
-                border: 0,
-                display: 'block',
-              }}
-            />
-          </Box>
-
-          {/* Fallback Download / Direct View Button in case browser blocks embed */}
-          <Box sx={{ mt: 1.5, display: 'flex', justifyContent: 'flex-end' }}>
-            <Button
-              component="a"
-              href={product.broachure}
-              target="_blank"
-              rel="noopener noreferrer"
-              size="small"
-              variant="outlined"
-              sx={{ textTransform: 'none', borderRadius: 2 }}
+          />
+          <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+            <Button variant="contained"
+              onClick={() => saveAs(pdfUrl, `${id}_broachure.pdf`)}
             >
-              Open PDF in New Tab
+              Download PDF
             </Button>
           </Box>
-        </Box>
-      )}
+        </>
+      }
     </Box>
   );
 }
