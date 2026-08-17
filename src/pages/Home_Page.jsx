@@ -175,8 +175,9 @@ function Home_Page() {
               src="https://res.cloudinary.com/djc8opvcg/video/upload/v1786612749/S_mark/smark_video_sound_rqbho8.mp4"
               width="640"
               height="360"
+              
               style={{ height: 'auto', width: '100%', aspectRatio: '640 / 360', boxShadow: "0 10px 10px rgba(0,0,0,0.4)", borderRadius: 10 }}
-              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+              allow="fullscreen; encrypted-media; picture-in-picture"
             />
           </MotionBox>
 
