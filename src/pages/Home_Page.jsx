@@ -8,14 +8,11 @@ import { FaCheckCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import FAQs from "../components/FAQs";
+import HeroSlider from "../components/home/HeroSlider";
 
 import "swiper/css";
 
-const images = [
-  "https://res.cloudinary.com/djc8opvcg/image/upload/v1786338161/S_mark/hero_banner/Hero_Banner_01_miv45f.webp",
-  "https://res.cloudinary.com/djc8opvcg/image/upload/v1786338162/S_mark/hero_banner/Hero_banner_02_xfaymc.webp",
-  "https://res.cloudinary.com/djc8opvcg/image/upload/v1786338170/S_mark/hero_banner/Hero_banner_03_qoz0me.png",
-];
 
 const PRIMARY_CYAN = "#3DCED4";
 const ACCENT_GREEN = "#81D959";
@@ -24,7 +21,7 @@ const ACCENT_GREEN = "#81D959";
 const MotionBox = motion.create(Box);
 const MotionTypo = motion.create(Typography);
 const MotionPaper = motion.create(Paper);
-
+console.log('hello')
 // Animation Variants
 const containerStagger = {
   hidden: { opacity: 0 },
@@ -57,17 +54,6 @@ const cardPop = {
 };
 
 function Home_Page() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (images.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <Box
@@ -78,50 +64,7 @@ function Home_Page() {
       }}
     >
       {/* 1. HERO SLIDER BANNER */}
-      <Box
-        sx={{
-          position: "sticky",
-          top: 0,
-          zIndex: 1,
-          height: { xs: "35vh", sm: "45vh", md: "500px" },
-          minHeight: { xs: 260, sm: 360 },
-          maxHeight: 600,
-          width: "100%",
-          bgcolor: "#ffffff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
-        }}
-      >
-        {images.map((img, index) => {
-          const isActive = currentIndex === index;
-
-          return (
-            <Box
-              key={`${img}-${index}`}
-              component="img"
-              src={img}
-              alt={`Smark Logo Hero ${index}`}
-              aria-hidden={!isActive}
-              loading={index === 0 ? "eager" : "lazy"}
-              sx={{
-                width: "100%",
-                height: "100%",
-                objectFit: { xs: "contain", md: "cover" },
-                objectPosition: "center",
-                position: "absolute",
-                top: 0,
-                left: 0,
-                opacity: isActive ? 1 : 0,
-                pointerEvents: isActive ? "auto" : "none",
-                willChange: "opacity",
-                transition: "opacity 0.8s ease-in-out",
-              }}
-            />
-          );
-        })}
-      </Box>
+      <HeroSlider />
 
       {/* 2. OVERLAYING CONTENT CONTAINER */}
       <Box
@@ -175,7 +118,7 @@ function Home_Page() {
               src="https://res.cloudinary.com/djc8opvcg/video/upload/v1786612749/S_mark/smark_video_sound_rqbho8.mp4"
               width="640"
               height="360"
-              
+
               style={{ height: 'auto', width: '100%', aspectRatio: '640 / 360', boxShadow: "0 10px 10px rgba(0,0,0,0.4)", borderRadius: 10 }}
               allow="fullscreen; encrypted-media; picture-in-picture"
             />
@@ -484,6 +427,9 @@ function Home_Page() {
               </Swiper>
             </Box>
           </Box>
+
+          {/* FAQs  */}
+          <FAQs faqs={home_page.FAQ} />
         </Container>
       </Box>
 

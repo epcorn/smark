@@ -7,13 +7,7 @@ import { Skeleton } from '@mui/material';
 
 import Home_Page from './pages/Home_Page';
 import Footer from './components/Footer';
-// import About_Us from './pages/About_Us';
-// import ProductDetails from './pages/ProductDetails';
-// import Service_Details from './pages/Service_Details';
-// import Academy from './pages/Academy';
-// import Research from './pages/Research';
 
-// const Home_Page = lazy(()=> import('./pages/Home_Page'))
 const About_Us = lazy(() => import('./pages/About_Us'))
 const ProductDetails = lazy(() => import('./pages/ProductDetails'))
 const Service_Details = lazy(() => import('./pages/Service_Details'))

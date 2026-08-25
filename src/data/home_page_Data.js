@@ -85,6 +85,45 @@ export const home_page = {
       },
     ],
   },
+  "FAQ": [
+    {
+      id: 1,
+      question: "What is SMARK and what does it do?",
+      answer:
+        "SMARK is an innovation-driven organization working across **pest management, products, professional services, education, research, sustainability, and technology-based solutions**.",
+    },
+    {
+      id: 2,
+      question: " What products and services does SMARK offer?",
+      answer:
+        "SMARK offers **pest management products, professional pest management services, technical monitoring solutions, mechanical/instrumental equipment, and customized mechanical / IT solutions/ service solutions** for residential, commercial, industrial, food, hospitality, healthcare, pharma and institutional environments.",
+    },
+    {
+      id: 3,
+      question: "What is SMARK Academy?",
+      answer:
+        "SMARK Academy provides **professional training, skill development, certification courses, industry workshops, practical learning, and college collaboration programs** to develop skills and knowledge in pest management and related fields.",
+    },
+    {
+      id: 4,
+      question: "What does SMARK Research focus on?",
+      answer:
+        "SMARK Research focuses on **development of new technological advancement in IT, pest biology and behaviour, scientific validation, integrated pest management, product development, green & sustainable technology, biomimicking, sustainability, and emerging technologies for mechanical and IT infrastructure including AI infrastructure**.",
+    },
+    {
+      id: 5,
+      question: " Does SMARK develop innovative and sustainable solutions?",
+      answer:
+        "Yes. SMARK explores **IoT solutions, green chemistry, nature-inspired technologies, smart monitoring, sustainable pest management, and future technologies** to create practical and responsible solutions.",
+    },
+    {
+      id: 6,
+      question: "How can I work or collaborate with SMARK?",
+      answer:
+        "You can connect with SMARK for **product development, product licensing, technical pest management services, training, research, technology development, institutional collaboration, industry partnerships, and innovation projects** through the Contact section of the website.",
+    },
+  ],
+
   footer:
     "is an innovation-driven organization delivering science-based, sustainable, and environmentally responsible pest management solutions through research, technology, products, and professional service",
 
