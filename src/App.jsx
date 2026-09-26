@@ -8,17 +8,17 @@ import { Skeleton } from '@mui/material';
 import Home_Page from './pages/Home_Page';
 import Footer from './components/Footer';
 
+
 const About_Us = lazy(() => import('./pages/About_Us'))
 const ProductDetails = lazy(() => import('./pages/ProductDetails'))
 const Service_Details = lazy(() => import('./pages/Service_Details'))
 const Academy = lazy(() => import('./pages/Academy'))
 const Research = lazy(() => import('./pages/Research'))
-
+import { Analytics } from "@vercel/analytics/react"
 
 
 
 export function Layout() {
-
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -41,6 +41,7 @@ export function Layout() {
 
   return (
     <>
+      <Analytics />
       <ScrollToTop />
       <div className="sticky -top-10 z-50 transition-all duration-300 ease-in-out bg-white/90 backdrop-blur-md shadow-md">
         <NavigationBar />

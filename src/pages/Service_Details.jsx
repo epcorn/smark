@@ -83,6 +83,8 @@ function Service_Details() {
           initial="hidden"
           whileInView="visible"
           src={service?.banner}
+          loading="eager"
+          fetchPriority="high"
         />
 
         <MotionBox
@@ -436,12 +438,11 @@ function Service_Details() {
         )}
       </Container>
 
-      {pdfUrl &&
+      {pdfUrl && (
         <>
           <Box
             component="iframe"
-            // src={`${pdfUrl}#toolbar=0`}
-            src={`https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}&embedded=true`}
+            src={`${pdfUrl}#toolbar=1`}
             title={id}
             loading="lazy"
             sx={{
@@ -455,14 +456,17 @@ function Service_Details() {
             }}
           />
           <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
-            <Button variant="contained"
-              onClick={() => saveAs(pdfUrl, `${id}_broachure.pdf`)}
+            <Button
+              variant="contained"
+              component="a"
+              href={pdfUrl}
+              download={`${id}_broachure.pdf`}
             >
               Download PDF
             </Button>
           </Box>
         </>
-      }
+      )}
     </Box>
   );
 }

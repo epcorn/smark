@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Accordion from '@mui/material/Accordion';
@@ -23,6 +23,7 @@ export default function FAQs({ faqs }) {
 
       {faqs.map((faq, index) => {
         const panelId = `panel-${index}`;
+
         return (
           <Accordion
             key={faq.id || index}
@@ -32,16 +33,17 @@ export default function FAQs({ faqs }) {
             elevation={0}
             sx={{
               mb: 1.5,
-              border: '1px solid #e2e8f0',
+              border: '1px solid #83a4cf',
               borderRadius: '8px !important',
               overflow: 'hidden',
               '&:before': { display: 'none' },
             }}
           >
             <AccordionSummary
-              expandIcon={<IoIosArrowDown sx={{ color: 'text.secondary' }} />}
+              expandIcon={<IoIosArrowDown sx={{ color: 'text.secondary' }} className='text-2xl font-bold' />}
               sx={{
-                bgcolor: expanded === panelId ? 'rgba(61, 206, 212, 0.08)' : '#f8fafc',
+                // bgcolor: expanded === panelId ? 'rgba(74, 183, 187, 0.87)' : '#33a71c71',
+                bgcolor: '#33a71c71',
                 px: 2.5,
                 py: 1,
                 '& .MuiAccordionSummary-content': { my: 1 },
@@ -52,7 +54,7 @@ export default function FAQs({ faqs }) {
               </Typography>
             </AccordionSummary>
 
-            <AccordionDetails sx={{ px: 2.5, py: 2, bgcolor: '#ffffff', borderTop: '1px solid #e2e8f0' }}>
+            <AccordionDetails sx={{ px: 2.5, py: 2, bgcolor: '#93edf09c', borderLeft: '5px solid #3DCED4' }}>
               <Typography color="text.secondary" sx={{ lineHeight: 1.7 }}>
                 {faq.answer}
               </Typography>

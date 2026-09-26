@@ -51,7 +51,7 @@ function ProductDetails() {
   const pdfUrl = product?.broachure
 
   console.log(products_Data)
-  
+
   if (!product) {
     return (
       <Box
@@ -85,7 +85,8 @@ function ProductDetails() {
             component="img"
             src={product.banner}
             alt="Hero Banner"
-            loading="lazy"
+            loading="eager"
+            fetchPriority="high"
             sx={{
               // position: "absolute",
               inset: 0,
@@ -497,11 +498,11 @@ function ProductDetails() {
           </MotionBox>
         )}
       </Container>
-      {pdfUrl &&
+      {pdfUrl && (
         <>
           <Box
             component="iframe"
-            src={`https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}&embedded=true`}
+            src={`${pdfUrl}#toolbar=1`}
             title={id}
             loading="lazy"
             sx={{
@@ -515,14 +516,18 @@ function ProductDetails() {
             }}
           />
           <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
-            <Button variant="contained"
-              onClick={() => saveAs(pdfUrl, `${id}_broachure.pdf`)}
+            <Button
+              variant="contained"
+              component="a"
+              href={pdfUrl}
+              download={`${id}_broachure.pdf`}
             >
               Download PDF
             </Button>
           </Box>
         </>
-      }
+      )}
+
     </Box>
   );
 }

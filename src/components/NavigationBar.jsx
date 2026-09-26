@@ -1,322 +1,190 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from "react";
 import {
-  AppBar,
-  Toolbar,
-  Box,
-  Button,
-  Menu,
-  MenuItem,
-  IconButton,
-  Drawer,
-  List,
-  ListItemText,
-  ListItemButton,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-  Container,
-  Divider,
-  Stack,
-  Link as MuiLink,
-} from '@mui/material';
+  AppBar, Toolbar, Box, Button, Menu, MenuItem, IconButton, Drawer,
+  List, ListItemText, ListItemButton, Accordion, AccordionSummary,
+  AccordionDetails, Container, Divider, Stack, Link as MuiLink,
+} from "@mui/material";
 import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaBars,
-  FaTimes,
-  FaChevronDown,
-  FaChevronRight,
-  FaEnvelope,
-  FaPhoneAlt,
-} from 'react-icons/fa';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { navItems } from '../data/navbar_Data';
-import { home_page } from '../data/home_page_Data';
+  FaFacebookF, FaInstagram, FaLinkedinIn, FaBars, FaTimes,
+  FaChevronDown, FaChevronRight, FaEnvelope, FaPhoneAlt,
+} from "react-icons/fa";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { navItems } from "../data/navbar_Data";
+import { home_page } from "../data/home_page_Data";
+import Search from "./home/Search";
 
-// Brand Design Constants
-const PRIMARY_CYAN = '#3DCED4';
-const ACCENT_GREEN = '#81D959';
-const DARK_TEXT = '#1A202C';
+const C = { primary: "#3DCED4", green: "#81D959", text: "#1A202C", border: "#E2E8F0", white: "#fff" };
 
-const logos = [
-  { location: "/home", logo: '/Smark_logos/Smark_logo.png' },
-  { location: "/service", logo: '/public/Smark_logos/Smark_Service_Logo.png' },
-  { location: "/product", logo: '/public/Smark_logos/Smark Product logo.png' },
-  { location: "/academy", logo: '/public/Smark_logos/Smark_Academy_logo.png' },
-  { location: "/research", logo: '/public/Smark_logos/Smark_Research_logo.png' },
-]
-/* =====================================================
-    1. TOP ANNOUNCEMENT / CONTACT BAR
-====================================================== */
-function TopContactBar() {
-  return (
-    <Box
-      sx={{
-        bgcolor: "#81D959",
-        color: '#0F172A',
-        py: 0.75,
-        px: { xs: 2, sm: 4 },
-        fontSize: '0.825rem',
-        borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
-      }}
-    >
-      <Container maxWidth="xl">
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          {/* Contact Details */}
-          <Stack direction="row" spacing={{ xs: 2, sm: 3.5 }} className='flex items-center'>
-            <MuiLink
-              href={`mailto:${home_page.email}`}
-              underline="none"
-              sx={{
-                color: 'inherit',
-                fontWeight: 600,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 1,
-                transition: 'opacity 0.2s',
-                '&:hover': { opacity: 0.8 },
-              }}
-            >
-              <FaEnvelope style={{ fontSize: '0.85rem' }} />
-              <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
-                Email:
-              </Box>{' '}
-              {home_page.email}
-            </MuiLink>
+const LOGOS = {
+  service: "/Smark_logos/Smark_Service_Logo.png",
+  product: "/Smark_logos/Smark_Product_logo.png",
+  academy: "/Smark_logos/Smark_Academy_logo.png",
+  research: "/Smark_logos/Smark_Research_logo.png",
+  default: "/Smark_logos/Smark_logo.png",
+};
 
-            <MuiLink
-              href={`tel:+${home_page?.contact}`}
-              underline="none"
-              sx={{
-                color: 'inherit',
-                fontWeight: 600,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 1,
-                transition: 'opacity 0.2s',
-                '&:hover': { opacity: 0.8 },
-              }}
-            >
-              <FaPhoneAlt style={{ fontSize: '0.8rem' }} />
-              <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
-                Call Us:
-              </Box>{' '}
-              {home_page?.contact}
-            </MuiLink>
-          </Stack>
+const SOCIALS = [
+  [FaFacebookF, "#1877F2"],
+  [FaInstagram, "#E4405F"],
+  [FaLinkedinIn, "#0A66C2"],
+];
 
-          {/* Social Icons */}
-          <Stack direction="row" spacing={1} className='hidden! items-center '>
-            <Typography
-              variant="caption"
-              sx={{
-                display: { xs: 'none', md: 'block' },
-                fontWeight: 700,
-                letterSpacing: 0.5,
-                mr: 0.5,
-              }}
-            >
-              FOLLOW US:
-            </Typography>
+const menuPaperSx = { borderRadius: "12px", boxShadow: "0 10px 30px rgba(0,0,0,.1)", overflow: "hidden" };
 
-            {[
-              { icon: <FaFacebookF />, color: '#1877F2', href: '' },
-              { icon: <FaInstagram />, color: '#E4405F', href: '' },
-              { icon: <FaLinkedinIn />, color: '#0A66C2', href: '' },
-            ].map((social, idx) => (
-              <IconButton
-                key={idx}
-                component="a"
-                href={social.href}
-                size="small"
-                sx={{
-                  bgcolor: 'rgba(255, 255, 255, 0.85)',
-                  color: social.color,
-                  width: 26,
-                  height: 26,
-                  fontSize: '0.75rem',
-                  transition: 'all 0.2s ease',
-                  '&:hover': {
-                    bgcolor: social.color,
-                    color: '#ffffff',
-                    transform: 'translateY(-2px)',
-                  },
-                }}
-              >
-                {social.icon}
-              </IconButton>
-            ))}
-          </Stack>
-        </Box>
-      </Container>
-    </Box>
-  );
-}
+/* ---------- Top contact bar ---------- */
 
-/* =====================================================
-    2. DESKTOP DROPDOWN MENU ITEMS
-====================================================== */
-function NestedDesktopMenuItem({ item, onCloseParent }) {
+const TopContactBar = () => (
+  <Box sx={{ bgcolor: C.green, color: "#0F172A", py: 0.75, px: { xs: 2, sm: 4 }, fontSize: "0.825rem", height: 34 }}>
+    <Container maxWidth="xl">
+      <Stack direction="row" justifyContent="space-between" alignItems="center">
+        <Stack direction="row" spacing={{ xs: 2, sm: 3.5 }}>
+          <MuiLink href={`mailto:${home_page.email}`} underline="none" sx={contactLinkSx}>
+            <FaEnvelope /> {home_page.email}
+          </MuiLink>
+          <MuiLink href={`tel:+${home_page?.contact}`} underline="none" sx={contactLinkSx}>
+            <FaPhoneAlt /> {home_page?.contact}
+          </MuiLink>
+        </Stack>
+
+        <Stack direction="row" spacing={1} sx={{ display: { xs: "none", md: "flex" } }}>
+          {SOCIALS.map(([Icon, color]) => (
+            <IconButton key={color} component="a" href="#" size="small" sx={socialBtnSx(color)}>
+              <Icon />
+            </IconButton>
+          ))}
+        </Stack>
+      </Stack>
+    </Container>
+  </Box>
+);
+
+const contactLinkSx = {
+  color: "inherit", fontWeight: 600, display: "flex", alignItems: "center", gap: 1,
+  "&:hover": { opacity: 0.8 },
+};
+
+const socialBtnSx = (color) => ({
+  bgcolor: "rgba(255,255,255,.85)", color, width: 26, height: 26, fontSize: ".75rem",
+  "&:hover": { bgcolor: color, color: "#fff", transform: "translateY(-2px)" },
+});
+
+/* ---------- Shared menu item (desktop + nested) ---------- */
+
+const MenuLink = ({ item, onClose }) => (
+  <MenuItem
+    component={Link}
+    to={item.href}
+    onClick={onClose}
+    sx={{
+      fontSize: ".875rem", py: 1.2, px: 2, color: C.text,
+      "&:hover": { bgcolor: `${C.primary}15`, pl: 2.5 },
+    }}
+  >
+    {item.label}
+  </MenuItem>
+);
+
+const NestedMenu = ({ item, onCloseParent }) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const timeoutRef = React.useRef(null);
 
-  if (!item.children) {
-    return (
+  if (!item.children) return <MenuLink item={item} onClose={onCloseParent} />;
+
+  const handleMouseEnter = (e) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setAnchorEl(null);
+    }, 150);
+  };
+
+  const handleMenuEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  };
+
+  return (
+    <Box onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <MenuItem
-        component={Link}
-        to={item.href}
-        onClick={onCloseParent}
         sx={{
-          fontSize: '0.875rem',
-          fontWeight: 500,
-          py: 1.2,
-          px: 2,
-          color: DARK_TEXT,
-          transition: 'all 0.15s ease',
-          '&:hover': {
-            bgcolor: `${PRIMARY_CYAN}15`,
-            pl: 2.5,
-          },
+          minWidth: 200,
+          justifyContent: "space-between",
+          gap: 2,
+          fontSize: ".875rem",
+          color: C.text,
+          "&:hover": { bgcolor: `${C.primary}15`, color: C.primary },
         }}
       >
         {item.label}
-      </MenuItem>
-    );
-  }
-
-  return (
-    <Box onMouseEnter={(e) => setAnchorEl(e.currentTarget)} onMouseLeave={() => setAnchorEl(null)}>
-      <MenuItem
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          fontSize: '0.875rem',
-          fontWeight: 500,
-          py: 1.2,
-          px: 2,
-          minWidth: 200,
-          color: DARK_TEXT,
-          '&:hover': {
-            bgcolor: `${PRIMARY_CYAN}15`,
-            color: PRIMARY_CYAN,
-          },
-        }}
-      >
-        <span>{item.label}</span>
-        <FaChevronRight style={{ fontSize: '0.65rem', color: ACCENT_GREEN }} />
+        <FaChevronRight style={{ fontSize: ".65rem", color: C.green }} />
       </MenuItem>
 
       <Menu
         anchorEl={anchorEl}
-        open={open}
+        open={Boolean(anchorEl)}
         onClose={() => setAnchorEl(null)}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
-        elevation={4}
-        paperprops={{
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        transformOrigin={{ vertical: "top", horizontal: "left" }}
+        PaperProps={{
+          onMouseEnter: handleMenuEnter,
+          onMouseLeave: handleMouseLeave,
           sx: {
-            mt: -0.5,
-            borderRadius: '12px',
-            borderLeft: `3px solid ${ACCENT_GREEN}`,
-            boxShadow: '0 10px 30px rgba(0,0,0,0.12)',
-            overflow: 'hidden',
+            ...menuPaperSx,
+            borderLeft: `3px solid ${C.green}`,
           },
         }}
       >
-        {item.children.map((subChild, idx) => (
-          <MenuItem
-            key={idx}
-            component={Link}
-            to={subChild.href}
-            onClick={() => {
+        {item.children.map((child) => (
+          <MenuLink
+            key={child.href}
+            item={child}
+            onClose={() => {
               setAnchorEl(null);
               onCloseParent();
             }}
-            sx={{
-              fontSize: '0.85rem',
-              py: 1,
-              px: 2,
-              color: DARK_TEXT,
-              transition: 'all 0.15s ease',
-              '&:hover': {
-                bgcolor: `${ACCENT_GREEN}20`,
-                color: DARK_TEXT,
-                fontWeight: 600,
-                pl: 2.5,
-              },
-            }}
-          >
-            {subChild.label}
-          </MenuItem>
+          />
         ))}
       </Menu>
     </Box>
   );
-}
+};
 
-function DesktopDropdown({ item }) {
+/* ---------- Desktop top-level dropdown ---------- */
+
+const DesktopDropdown = ({ item }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const { pathname } = useLocation();
   const open = Boolean(anchorEl);
-  const location = useLocation(); // Hook to check the active route
 
-  const buttonStyles = (isActive) => ({
-    textTransform: 'none',
-    fontWeight: 600,
-    fontSize: { sm: "0.75rem", md: '0.95rem' },
-    color: open ? 'black' : DARK_TEXT,
-    px: { sm: 1, md: 2 },
-    py: 1,
-    borderRadius: '8px',
-    bgcolor: isActive ? "rgba(0, 157, 163,0.4)" : "transparent",
-    transition: 'all 0.2s ease',
-    '&:hover': {
-      bgcolor: `rgba(0, 157, 163,0.4)`,
-    },
+  const isActive = item.children
+    ? item.children.some((c) => pathname === c.href)
+    : false;
+
+  const btnSx = (active) => ({
+    textTransform: "none", fontWeight: 600, fontSize: { sm: ".75rem", md: ".95rem" },
+    color: C.text, px: { sm: 1, md: 2 }, py: 1, borderRadius: "8px",
+    bgcolor: active ? "rgba(0,157,163,.4)" : "transparent",
+    "&:hover": { bgcolor: "rgba(0,157,163,.2)" },
   });
 
-  // 1. Handling Simple Links (No Sub-menus)
   if (!item.children) {
     return (
       <NavLink to={item.href} style={{ textDecoration: "none" }}>
         {({ isActive }) => (
-          // FIXED: Changed component={Link} to component="span" to prevent invalid nested anchors
-          <Button component="span" sx={buttonStyles(isActive)} >
-            {item.label}
-          </Button>
+          <Button component="span" sx={btnSx(isActive)}>{item.label}</Button>
         )}
-      </NavLink >
+      </NavLink>
     );
   }
-
-  // 2. Handling Dropdown Menus
-  // Dynamic Check: Is the current page URL one of the sub-menu child paths?
-  const isDropdownActive = item.children.some(child => location.pathname === child.href);
 
   return (
     <>
       <Button
         onClick={(e) => setAnchorEl(e.currentTarget)}
-        endIcon={
-          <FaChevronDown
-            style={{
-              fontSize: '0.7rem',
-              transition: 'transform 0.2s ease',
-              transform: open ? 'rotate(180deg)' : 'none',
-              color: 'black',
-            }}
-          />
-        }
-        // FIXED: Passed the calculated dropdown active state to the styles function
-        sx={buttonStyles(isDropdownActive)}
+        endIcon={<FaChevronDown style={{ fontSize: ".7rem", transform: open ? "rotate(180deg)" : "none" }} />}
+        sx={btnSx(isActive)}
       >
         {item.label}
       </Button>
@@ -325,212 +193,122 @@ function DesktopDropdown({ item }) {
         anchorEl={anchorEl}
         open={open}
         onClose={() => setAnchorEl(null)}
-        elevation={4}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
-        paperprops={{
-          sx: {
-            mt: 1,
-            minWidth: 200,
-            borderRadius: '12px',
-            borderTop: `3px solid ${PRIMARY_CYAN}`,
-            boxShadow: '0 12px 32px rgba(0,0,0,0.08)',
-            py: 0.5,
-          },
-        }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+        transformOrigin={{ vertical: "top", horizontal: "left" }}
+        PaperProps={{ sx: { ...menuPaperSx, mt: 1, minWidth: 200, borderTop: `3px solid ${C.primary}` } }}
       >
-        {item.children.map((child, index) => (
-          <NestedDesktopMenuItem
-            key={index}
-            item={child}
-            onCloseParent={() => setAnchorEl(null)}
-          />
+        {item.children.map((child) => (
+          <NestedMenu key={child.href || child.label} item={child} onCloseParent={() => setAnchorEl(null)} />
         ))}
       </Menu>
     </>
   );
-}
-/* =====================================================
-    3. RECURSIVE MOBILE DRAWER ITEMS
-====================================================== */
-function MobileNavItem({ item, onCloseDrawer }) {
-  if (item.children) {
-    return (
-      <Accordion disableGutters elevation={0} square sx={{ bgcolor: 'transparent', '&:before': { display: 'none' } }}>
-        <AccordionSummary
-          expandIcon={<FaChevronDown style={{ fontSize: '0.75rem', color: PRIMARY_CYAN }} />}
-          sx={{
-            px: 2.5,
-            py: 0.5,
-            '&:hover': { bgcolor: `${PRIMARY_CYAN}08` },
-          }}
-        >
-          <Typography sx={{ fontWeight: 600, fontSize: '0.95rem', color: DARK_TEXT }}>
-            {item.label}
-          </Typography>
-        </AccordionSummary>
+};
 
-        <AccordionDetails sx={{ p: 0, pl: 2, borderLeft: `3px solid ${ACCENT_GREEN}`, ml: 2.5, mb: 1 }}>
-          <List disablePadding>
-            {item.children.map((child, idx) => (
-              <MobileNavItem key={idx} item={child} onCloseDrawer={onCloseDrawer} />
-            ))}
-          </List>
-        </AccordionDetails>
-      </Accordion>
+/* ---------- Mobile drawer item ---------- */
+
+const MobileNavItem = ({ item, onClose }) => {
+  if (!item.children) {
+    return (
+      <ListItemButton
+        component={Link}
+        to={item.href}
+        onClick={onClose}
+        sx={{ py: 1.2, px: 2.5, mx: 1, borderRadius: "8px", "&:hover": { bgcolor: `${C.green}15` } }}
+      >
+        <ListItemText
+          primary={item.label}
+          primaryTypographyProps={{ fontSize: ".9rem", color: C.text, fontWeight: 500 }}
+        />
+      </ListItemButton>
     );
   }
 
   return (
-    <ListItemButton
-      component={Link}
-      to={item.href}
-      onClick={onCloseDrawer}
-      sx={{
-        py: 1.2,
-        px: 2.5,
-        borderRadius: '8px',
-        mx: 1,
-        my: 0.2,
-        '&:hover': {
-          bgcolor: `${ACCENT_GREEN}15`,
-          '& .MuiListItemText-primary': { color: PRIMARY_CYAN, fontWeight: 700 },
-        },
-      }}
-    >
-      <ListItemText
-        primary={item.label}
-        primaryTypographyProps={{ fontSize: '0.9rem', color: DARK_TEXT, fontWeight: 500 }}
-      />
-    </ListItemButton>
-  );
-}
+    <Accordion disableGutters elevation={0} sx={{ bgcolor: "transparent", "&:before": { display: "none" } }}>
+      <AccordionSummary
+        expandIcon={<FaChevronDown style={{ fontSize: ".75rem", color: C.primary }} />}
+        sx={{ px: 2.5 }}
+      >
+        <Box component="span" sx={{ fontWeight: 600, fontSize: ".95rem", color: C.text }}>
+          {item.label}
+        </Box>
+      </AccordionSummary>
 
-/* =====================================================
-    4. MAIN NAVIGATION HEADER COMPONENT
-====================================================== */
+      <AccordionDetails sx={{ p: 0, pl: 2, ml: 2.5, borderLeft: `3px solid ${C.green}` }}>
+        <List disablePadding>
+          {item.children.map((child) => (
+            <MobileNavItem key={child.href || child.label} item={child} onClose={onClose} />
+          ))}
+        </List>
+      </AccordionDetails>
+    </Accordion>
+  );
+};
+
+/* ---------- Main header ---------- */
+
 export default function NavigationHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const location = useLocation();
+  const { pathname } = useLocation();
 
-  const getCurrentLogo = () => {
-    const currentPath = location.pathname.toLowerCase();
-    if (currentPath.includes('/service')) return '/Smark_logos/Smark_Service_Logo.png';
-    if (currentPath.includes('/product')) return '/Smark_logos/Smark_Product_logo.png';
-    if (currentPath.includes('/academy')) return '/Smark_logos/Smark_Academy_logo.png';
-    if (currentPath.includes('/research')) return '/Smark_logos/Smark_Research_logo.png';
-
-    return '/Smark_logos/Smark_logo.png';
-  }
-
-  const activeLogo = getCurrentLogo();
+  const activeLogo = useMemo(() => {
+    const path = pathname.toLowerCase();
+    const key = Object.keys(LOGOS).find((name) => name !== "default" && path.includes(`/${name}`));
+    return LOGOS[key || "default"];
+  }, [pathname]);
 
   return (
-    <Box component="header" sx={{ position: 'sticky', top: 0, zIndex: 1100, bgcolor: '#3DCED4' }}>
-      {/* Top Contact Bar */}
+    <Box component="header" sx={{ position: "sticky", top: 0, zIndex: 1100 }}>
       <TopContactBar />
 
-      {/* Main Navigation Toolbar */}
       <AppBar
-        position="static"
+        position="sticky"
         elevation={0}
-        sx={{
-          bgcolor: '#fff',
-          color: DARK_TEXT,
-          borderBottom: '1px solid #E2E8F0',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
-        }}
+        sx={{ top: 3, bgcolor: C.white, color: C.text, borderBottom: `1px solid ${C.border}`, boxShadow: "0 4px 20px rgba(0,0,0,.03)" }}
       >
         <Container maxWidth="xl">
-          <Toolbar disableGutters sx={{ minHeight: { xs: 64, md: 72 }, justifyContent: 'space-between' }}>
-            {/* Logo */}
-            <Box
-              component={Link}
-              to="/"
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                textDecoration: 'none',
-              }}
-            >
-              <Box
-                component="img"
-                src={activeLogo}
-                alt="S Mark Logo"
-                sx={{ height: { xs: 42, sm: 50 }, width: 'auto' }}
-              />
+          <Toolbar disableGutters sx={{ minHeight: { xs: 64, md: 72 }, justifyContent: "space-between" }}>
+            <Box component={Link} to="/" sx={{ display: "flex", alignItems: "center" }}>
+              <Box component="img" src={activeLogo} alt="S Mark Logo" sx={{ height: { xs: 42, sm: 50 }, width: "auto" }} />
             </Box>
 
-            {/* Desktop Navigation Links */}
-            <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 1, alignItems: 'center' }}>
-              {navItems.map((item, idx) => (
-                <DesktopDropdown key={idx} item={item} />
+            <Box sx={{ml:"auto", display:"none"}}>
+              <Search />
+            </Box>
+            {/* Desktop nav */}
+            <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 1, alignItems: "center" }}>
+              {navItems.map((item) => (
+                <DesktopDropdown key={item.href || item.label} item={item} />
               ))}
             </Box>
 
-            {/* Mobile Hamburger Toggle */}
+            {/* Mobile trigger */}
             <IconButton
-              aria-label="open drawer"
               onClick={() => setMobileOpen(true)}
-              sx={{
-                display: { sm: 'none' },
-                color: PRIMARY_CYAN,
-                bgcolor: `${PRIMARY_CYAN}10`,
-                p: 1.2,
-                borderRadius: '10px',
-                '&:hover': { bgcolor: `${PRIMARY_CYAN}20` },
-              }}
+              sx={{ display: { sm: "none" }, color: C.primary, bgcolor: `${C.primary}10` }}
             >
-              <FaBars style={{ fontSize: '1.2rem' }} />
+              <FaBars />
             </IconButton>
 
-            {/* Mobile Navigation Drawer */}
             <Drawer
               anchor="right"
               open={mobileOpen}
               onClose={() => setMobileOpen(false)}
-              paperprops={{
-                sx: {
-                  width: { xs: '85%', sm: 380 },
-                  bgcolor: '#ffffff',
-                },
-              }}
+              PaperProps={{ sx: { width: { xs: "85%", sm: 380 } } }}
             >
-              {/* Drawer Header */}
-              <Box
-                sx={{
-                  p: 2.5,
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  bgcolor: `${PRIMARY_CYAN}12`,
-                }}
-              >
-                <Box
-                  component="img"
-                  src="/Smark_logos/Smark_logo.png"
-                  alt="S Mark Logo"
-                  sx={{ height: 36, width: 'auto' }}
-                />
-                <IconButton
-                  onClick={() => setMobileOpen(false)}
-                  sx={{
-                    color: DARK_TEXT,
-                    bgcolor: '#ffffff',
-                    boxShadow: '0 2px 6px rgba(0,0,0,0.08)',
-                    '&:hover': { bgcolor: '#F8FAFC' },
-                  }}
-                >
-                  <FaTimes style={{ fontSize: '1rem' }} />
+              <Box sx={{ p: 2.5, display: "flex", justifyContent: "space-between", alignItems: "center", bgcolor: `${C.primary}12` }}>
+                <Box component="img" src={LOGOS.default} alt="S Mark Logo" sx={{ height: 36 }} />
+                <IconButton onClick={() => setMobileOpen(false)}>
+                  <FaTimes />
                 </IconButton>
               </Box>
 
-              <Divider sx={{ borderColor: ACCENT_GREEN, borderWidth: 1 }} />
+              <Divider sx={{ borderColor: C.green }} />
 
-              {/* Drawer Navigation List */}
               <List sx={{ py: 2 }}>
-                {navItems.map((item, idx) => (
-                  <MobileNavItem key={idx} item={item} onCloseDrawer={() => setMobileOpen(false)} />
+                {navItems.map((item) => (
+                  <MobileNavItem key={item.href || item.label} item={item} onClose={() => setMobileOpen(false)} />
                 ))}
               </List>
             </Drawer>

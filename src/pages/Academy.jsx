@@ -47,7 +47,8 @@ function Academy() {
           viewport={{ once: true }}
           component="img"
           src={data?.banner}
-          loading='lazy'
+          loading="eager"
+          fetchPriority="high"
           sx={{
             maxHeight: "65dvh",
             width: "100%",
