@@ -64,7 +64,7 @@ function About_Us() {
           mb: { xs: 4, md: 6 },
         }}
       />
-
+      <h1 className="hidden">smark</h1>
       <Container maxWidth="lg" sx={{ px: { xs: 2.5, sm: 4 } }}>
         {/* Overview Section */}
         <MotionBox
