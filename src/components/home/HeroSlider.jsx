@@ -25,7 +25,7 @@ export default function HeroSlider() {
         position: "sticky",
         top: 0,
         zIndex: 1,
-        height: { xs: "35vh", sm: "45vh", md: "500px" },
+        height: { xs: "35vh", sm: "45vh", md: "720px" },
         minHeight: { xs: 260, sm: 360 },
         maxHeight: 600,
         width: "100%",

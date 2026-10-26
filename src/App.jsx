@@ -22,8 +22,8 @@ export function Layout() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.005 - Math.pow(2, -10 * t)),
+      duration: 0.2,
+      // easing: (t) => Math.min(1, 1.005 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
 

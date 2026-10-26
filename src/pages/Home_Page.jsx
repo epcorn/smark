@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
@@ -21,7 +20,7 @@ const ACCENT_GREEN = "#81D959";
 const MotionBox = motion.create(Box);
 const MotionTypo = motion.create(Typography);
 const MotionPaper = motion.create(Paper);
-console.log('hello')
+
 // Animation Variants
 const containerStagger = {
   hidden: { opacity: 0 },
@@ -78,51 +77,182 @@ function Home_Page() {
       >
         <Container maxWidth="lg" sx={{ px: { xs: 2.5, sm: 4 }, pt: 5 }}>
           {/* Who We Are Section */}
+
           <MotionBox
+            component="section"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.1 }}
             sx={{
-              px: { xs: 3, sm: 5 },
-              py: 4,
-              bgcolor: "#ffffff",
-              borderRadius: "16px",
-              boxShadow: "0 4px 24px rgba(0, 0, 0, 0.06)",
-              border: "1px solid rgba(0, 0, 0, 0.5)",
-              mb: { xs: 5, md: 7 },
+              width: "100%",
+              // maxWidth: 1280,
+              mx: "auto",
+              px: { xs: 0, sm: 0, md: 0 },
+              py: { xs: 5, md: 9 },
             }}
           >
-            <Typography
-              variant="h4"
-              sx={{ fontWeight: 700, mb: 2, color: "text.primary" }}
+            {/* Section heading */}
+            <Box
+              sx={{
+                textAlign: "center",
+                maxWidth: 850,
+                mx: "auto",
+                mb: { xs: 4, md: 6 },
+              }}
             >
-              Who We Are
-            </Typography>
-            {Array.isArray(home_page?.paragraph1) &&
-              home_page.paragraph1.map((paragraph, index) => (
+              <Typography
+                component="p"
+                variant="overline"
+                sx={{
+                  color: "#159DA5",
+                  fontWeight: 700,
+                  letterSpacing: 2,
+                  mb: 1,
+                }}
+              >
+                ABOUT SMARK
+              </Typography>
+
+              <Typography
+                component="h2"
+                variant="h3"
+                sx={{
+                  fontWeight: 800,
+                  color: "#172B3A",
+                  fontSize: {
+                    xs: "1.8rem",
+                    sm: "2.3rem",
+                    md: "2.8rem",
+                  },
+                  lineHeight: 1.2,
+                  mb: 2,
+                }}
+              >
+                Who We Are
+              </Typography>
+
+              <Box
+                sx={{
+                  width: 64,
+                  height: 4,
+                  bgcolor: "#81D959",
+                  borderRadius: 5,
+                  mx: "auto",
+                }}
+              />
+            </Box>
+
+            {/* Main content card */}
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: {
+                  xs: "1fr",
+                  md: "1fr 1fr",
+                },
+                alignItems: "center",
+                gap: { xs: 4, md: 6 },
+                p: { xs: 2.5, sm: 4, md: 5 },
+                bgcolor: "#FFFFFF",
+                border: "1px solid #ad9a9a",
+                borderRadius: { xs: 3, md: 4 },
+                boxShadow: "0 12px 40px rgba(23, 43, 58, 0.07)",
+                overflow: "hidden",
+              }}
+            >
+              {/* Text content */}
+              <Box>
                 <Typography
-                  key={index}
-                  variant={index === 0 ? "subtitle1" : "body1"}
+                  component="p"
                   sx={{
-                    fontWeight: index === 0 ? 600 : 400,
-                    color: index === 0 ? "text.primary" : "text.secondary",
+                    color: "#159DA5",
+                    fontWeight: 700,
+                    fontSize: "0.9rem",
+                    letterSpacing: 0.5,
                     mb: 1.5,
-                    lineHeight: 1.7,
                   }}
                 >
-                  {paragraph}
+                  {home_page.subtitle}
                 </Typography>
-              ))}
-            <iframe
-              src="https://res.cloudinary.com/djc8opvcg/video/upload/v1786612749/S_mark/smark_video_sound_rqbho8.mp4"
-              width="640"
-              height="360"
 
-              style={{ height: 'auto', width: '100%', aspectRatio: '640 / 360', boxShadow: "0 10px 10px rgba(0,0,0,0.4)", borderRadius: 10 }}
-              allow="fullscreen; encrypted-media; picture-in-picture"
-            />
+                <Typography
+                  component="h1"
+                  variant="h3"
+                  sx={{
+                    fontWeight: 800,
+                    color: "#172B3A",
+                    fontSize: {
+                      xs: "1.8rem",
+                      sm: "2.2rem",
+                      md: "2.5rem",
+                    },
+                    lineHeight: 1.2,
+                    mb: 3,
+                  }}
+                >
+                  {home_page.mainTitle}
+                </Typography>
+
+                {Array.isArray(home_page?.paragraph1) &&
+                  home_page.paragraph1.map((paragraph, index) => (
+                    <Typography
+                      component="p"
+                      key={`${index}-${paragraph.slice(0, 20)}`}
+                      sx={{
+                        color: "#526170",
+                        fontSize: {
+                          xs: "0.95rem",
+                          md: "1.02rem",
+                        },
+                        lineHeight: 1.9,
+                        mb: 2,
+                        "&:last-child": {
+                          mb: 0,
+                        },
+                      }}
+                    >
+                      {paragraph}
+                    </Typography>
+                  ))}
+              </Box>
+
+              {/* Company video */}
+              <Box
+                sx={{
+                  width: "100%",
+                  minWidth: 0,
+                  position: "relative",
+                  aspectRatio: "16 / 9",
+                  borderRadius: 3,
+                  overflow: "hidden",
+                  bgcolor: "#172B3A",
+                  boxShadow: "0 12px 28px rgba(23, 43, 58, 0.16)",
+                }}
+              >
+                <Box
+                  component="video"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  aria-label="S Mark company introduction video"
+                  sx={{
+                    display: "block",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                >
+                  <source
+                    src="https://res.cloudinary.com/djc8opvcg/video/upload/v1786612749/S_mark/smark_video_sound_rqbho8.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support HTML video.
+                </Box>
+              </Box>
+            </Box>
           </MotionBox>
+
 
           {/* Highlights Section */}
           <Box sx={{ mb: { xs: 6, md: 8 } }}>

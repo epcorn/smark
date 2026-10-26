@@ -91,10 +91,10 @@ function ProductDetails() {
               // position: "absolute",
               inset: 0,
               width: "100%",
-              height: { sm: 330, md: 500 },
-              maxHeight: 500,
+              height: { sm: 300, md: 500,lg:720 },
+              maxHeight: 950,
               aspectRatio: 16 / 9,
-              objectFit: "cover",
+              objectFit: "contain",
               opacity: 1,
               pointerEvents: "none",
             }}
