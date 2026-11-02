@@ -1,12 +1,12 @@
 export const research_data = {
   banner:
     "https://res.cloudinary.com/djc8opvcg/image/upload/v1786451161/S_mark/research/Smark_Research_Background_s1rxiy.webp",
-  heading: "SMARK RESEARCH",
+  heading: "S Mark RESEARCH",
   tagline: "Science. Innovation. Nature. Impact.",
   summaryImg:
     "https://res.cloudinary.com/djc8opvcg/image/upload/v1786451161/S_mark/research/Image_for_research_side_ppkkwh.webp",
   summary:
-    "SMark Research is dedicated to developing science-based, innovative, and sustainable solutions for pest management, environmental health, product development, and emerging technologies. Our research approach combines scientific investigation, field experience, nature-inspired concepts, and technological innovation to transform real-world challenges into practical solutions.",
+    "S Mark Research is dedicated to developing science-based, innovative, and sustainable solutions for pest management, environmental health, product development, and emerging technologies. Our research approach combines scientific investigation, field experience, nature-inspired concepts, and technological innovation to transform real-world challenges into practical solutions.",
   philosophy: {
     title: "Research Philosophy",
     description:
@@ -31,7 +31,7 @@ export const research_data = {
     title: "Biomimicking",
     subtitle: "Learning from Nature to Create Better Solutions",
     description:
-      "SMark Research explores biological systems and natural mechanisms to develop innovative approaches to pest management and technology. By studying how organisms interact, adapt, communicate, survive, and respond to their environment, we explore opportunities to develop nature-inspired products, monitoring systems, deterrence technologies, and sustainable solutions.",
+      "S Mark Research explores biological systems and natural mechanisms to develop innovative approaches to pest management and technology. By studying how organisms interact, adapt, communicate, survive, and respond to their environment, we explore opportunities to develop nature-inspired products, monitoring systems, deterrence technologies, and sustainable solutions.",
   },
   greenTechnology: {
     img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786451162/S_mark/research/Green_Technology_wqkyji.webp",
@@ -85,13 +85,13 @@ export const research_data = {
   collaboration: {
     title: "Research Collaboration",
     description:
-      "SMark Research welcomes collaboration with universities, colleges, research institutions, laboratories, industries, scientists, technology companies, and subject-matter experts.",
+      "S Mark Research welcomes collaboration with universities, colleges, research institutions, laboratories, industries, scientists, technology companies, and subject-matter experts.",
     opportunities: [
       "Joint Research Projects",
       "Academic Research",
       "Field Studies",
     ],
-    cta: "Collaborate with SMark Research to turn ideas and scientific knowledge into practical solutions.",
+    cta: "Collaborate with S Mark Research to turn ideas and scientific knowledge into practical solutions.",
   },
   innovationImg:
     "https://res.cloudinary.com/djc8opvcg/image/upload/v1786451161/S_mark/research/Our_Journey_innovation_vector_image_qizhnp.webp",
@@ -99,7 +99,7 @@ export const research_data = {
     title: "Patent & Innovation",
     subtitle: "From Research to Intellectual Property",
     description:
-      "SMark Research encourages the development of innovative ideas into practical technologies, products, and intellectual property.",
+      "S Mark Research encourages the development of innovative ideas into practical technologies, products, and intellectual property.",
     workflow: [
       "Problem Identification",
       "Research",

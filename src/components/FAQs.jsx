@@ -77,7 +77,7 @@ export default function FAQs({ faqs }) {
               mx: "auto",
             }}
           >
-            Find answers to common questions about SMark,
+            Find answers to common questions about S Mark,
             our services, products, and solutions.
           </Typography>
 

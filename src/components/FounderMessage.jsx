@@ -80,6 +80,7 @@ const FounderMessage = ({ about }) => {
             component="div"
             sx={{
               color: '#334155',
+              textAlign:"justify",
               fontSize: { xs: '1rem', md: '1.125rem' },
               lineHeight: { xs: 1.7, md: 1.9 },
               fontWeight: 400,

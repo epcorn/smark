@@ -107,11 +107,12 @@ function Home_Page() {
                 sx={{
                   color: "#159DA5",
                   fontWeight: 700,
-                  letterSpacing: 2,
+                  letterSpacing: 0.5,
                   mb: 1,
+                  textTransform:"none"
                 }}
               >
-                ABOUT SMARK
+                ABOUT S Mark
               </Typography>
 
               <Typography

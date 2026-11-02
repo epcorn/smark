@@ -17,10 +17,7 @@ function Footer() {
             <a
               href="/"
               className="inline-flex items-center text-xl font-extrabold tracking-wide"
-            >
-              <span className="text-[#3DCED4]">S</span>
-              <span>MARK</span>
-              <span className="h-2 w-2 rounded-full bg-[#81D959]" />
+            ><img src="/Smark_logos/Smark_logo.png" className="h-12" alt="" />
             </a>
 
             {footer && (
@@ -80,7 +77,7 @@ function Footer() {
         <div className="mt-7 border-t border-white/10 pt-5 text-center">
           <p className="text-xs leading-5 text-slate-400">
             © {new Date().getFullYear()}{" "}
-            <span className="font-semibold text-[#3DCED4]">SMARK</span>.
+            <span className="font-semibold text-[#3DCED4]">S Mark</span>.
             All rights reserved.
           </p>
         </div>

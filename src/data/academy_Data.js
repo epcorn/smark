@@ -1,11 +1,11 @@
 export const academyData = {
   banner:
     "https://res.cloudinary.com/djc8opvcg/image/upload/v1786367631/S_mark/academy/Smark_Academy_background_image_c5g5de.webp",
-  heading: "SMARK ACADEMY",
+  heading: "S Mark ACADEMY",
   title: "Knowledge. Innovation. Research. Industry Excellence.",
   header: {
     para1:
-      "SMARK Academy is a dedicated learning, training, and innovation platform focused on building professional capabilities in pest management, pest control technologies, product innovation, applied research, and sustainable pest solutions.",
+      "S Mark Academy is a dedicated learning, training, and innovation platform focused on building professional capabilities in pest management, pest control technologies, product innovation, applied research, and sustainable pest solutions.",
     para2:
       "The Academy connects industry professionals, students, educational institutions, researchers, and innovators through practical training, certification programs, workshops, collaborative research, and innovation initiatives.",
     para3:
@@ -14,11 +14,11 @@ export const academyData = {
   about: {
     img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786367631/S_mark/academy/about_smark_academy_g15chh.webp",
     para1:
-      "SMARK Academy is designed as a knowledge and innovation ecosystem where education meets industry experience.",
+      "S Mark Academy is designed as a knowledge and innovation ecosystem where education meets industry experience.",
     para2:
       "The Academy provides structured learning opportunities covering pest identification, pest biology, Integrated Pest Management (IPM), inspection techniques, monitoring systems, treatment methodologies, safety practices, product technologies, and emerging pest management solutions.",
     para3:
-      "Through industry experts, practical demonstrations, workshops, field exposure, and research-oriented learning, SMARK Academy helps participants develop both technical knowledge and practical skills.",
+      "Through industry experts, practical demonstrations, workshops, field exposure, and research-oriented learning, S Mark Academy helps participants develop both technical knowledge and practical skills.",
   },
   focusImg:
     "https://res.cloudinary.com/djc8opvcg/image/upload/v1786367631/S_mark/academy/Our_Focus_xzmwzc.webp",
@@ -62,7 +62,7 @@ export const academyData = {
   certification: {
     course: {
       title: "CERTIFICATION COURSES",
-      desc: "SMARK Academy offers structured certification courses designed to enhance professional knowledge and career development.",
+      desc: "S Mark Academy offers structured certification courses designed to enhance professional knowledge and career development.",
       incs: {
         title: "Certification Programs May Include:",
         keys: [
@@ -80,7 +80,7 @@ export const academyData = {
       },
       {
         title: "Industry Workshops",
-        desc: "Smark Academy conducts focused workshops for organizations and professionals on current pest management challenges. Workshops may cover IPM implementation, pest prevention, monitoring systems, food safety, warehouse pest management, vector control, rodent management, emerging technologies, and best practices.",
+        desc: "S Mark Academy conducts focused workshops for organizations and professionals on current pest management challenges. Workshops may cover IPM implementation, pest prevention, monitoring systems, food safety, warehouse pest management, vector control, rodent management, emerging technologies, and best practices.",
       },
       {
         title: "College Collaboration",
@@ -92,7 +92,7 @@ export const academyData = {
       },
       {
         title: "Research",
-        desc: "Smark Academy promotes research in areas including pest biology and behaviour, integrated pest management, vector management, pest monitoring, sustainable pest management, product development, field studies, and emerging technologies. Research activities aim to transform scientific knowledge and field observations into practical industry solutions.",
+        desc: "S Mark Academy promotes research in areas including pest biology and behaviour, integrated pest management, vector management, pest monitoring, sustainable pest management, product development, field studies, and emerging technologies. Research activities aim to transform scientific knowledge and field observations into practical industry solutions.",
       },
     ],
   },

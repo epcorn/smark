@@ -64,7 +64,7 @@ function About_Us() {
           mb: { xs: 4, md: 6 },
         }}
       />
-      <h1 className="hidden">smark</h1>
+      <h1 className="hidden">S Mark</h1>
       <Container maxWidth="lg" sx={{ px: { xs: 2.5, sm: 4 } }}>
         {/* Overview Section */}
         <MotionBox
@@ -244,7 +244,7 @@ function About_Us() {
               mb: { xs: 3, md: 4 },
               fontSize: { xs: "1.5rem", sm: "2rem" },
             }}>
-            What Defines SMark
+            What Defines S Mark
           </MotionTypo>
 
           <MotionBox
