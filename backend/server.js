@@ -11,7 +11,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["https://in-smark.com","http://localhost:5173"],
+    origin: [
+      "https://in-smark.com",
+      "https://www.in-smark.com",
+      "http://localhost:5173",
+    ],
   }),
 );
 
@@ -93,12 +97,10 @@ app.post("/send-application", async (req, res) => {
       .send({ success: true, message: "Application sent successfully!" });
   } catch (error) {
     console.error("Error sending email:", error);
-    return res
-      .status(500)
-      .send({
-        success: false,
-        error: error.message || "Failed to send application.",
-      });
+    return res.status(500).send({
+      success: false,
+      error: error.message || "Failed to send application.",
+    });
   }
 });
 
