@@ -9,13 +9,19 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://in-smark.com","http://localhost:5173"],
+  }),
+);
 
 // Configure fileUpload to use Vercel's temporary /tmp/ directory safely
-app.use(fileUpload({
-  useTempFiles: true,
-  tempFileDir: '/tmp/'
-}));
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/",
+  }),
+);
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -29,7 +35,9 @@ const transporter = nodemailer.createTransport({
 
 // Test route to verify the deployment is working
 app.get("/test", (req, res) => {
-  return res.status(200).json({ success: true, message: "Backend is working!" });
+  return res
+    .status(200)
+    .json({ success: true, message: "Backend is working!" });
 });
 
 app.post("/send-application", async (req, res) => {
@@ -80,10 +88,17 @@ app.post("/send-application", async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
-    return res.status(200).send({ success: true, message: "Application sent successfully!" });
+    return res
+      .status(200)
+      .send({ success: true, message: "Application sent successfully!" });
   } catch (error) {
     console.error("Error sending email:", error);
-    return res.status(500).send({ success: false, error: error.message || "Failed to send application." });
+    return res
+      .status(500)
+      .send({
+        success: false,
+        error: error.message || "Failed to send application.",
+      });
   }
 });
 
