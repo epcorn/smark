@@ -11,9 +11,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
+// Configure fileUpload to use Vercel's temporary /tmp/ directory safely
 app.use(fileUpload({
   useTempFiles: true,
-  tempFileDir: '/tmp/' // Use Vercel's temporary directory for file uploads
+  tempFileDir: '/tmp/'
 }));
 
 const transporter = nodemailer.createTransport({
@@ -26,7 +28,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Test route to verify backend is working
+// Test route to verify the deployment is working
 app.get("/test", (req, res) => {
   return res.status(200).json({ success: true, message: "Backend is working!" });
 });
@@ -53,7 +55,7 @@ app.post("/send-application", async (req, res) => {
       const uploadedFile = req.files.resume;
       attachments.push({
         filename: uploadedFile.name,
-        path: uploadedFile.tempFilePath, // Handle file via temp path for serverless compatibility
+        path: uploadedFile.tempFilePath,
       });
     }
 
@@ -86,7 +88,7 @@ app.post("/send-application", async (req, res) => {
   }
 });
 
-// Local fallback
+// Local dev fallback (Ignored when running on Vercel)
 if (process.env.NODE_ENV !== "production") {
   const PORT = 5000;
   app.listen(PORT, () => {
@@ -94,4 +96,5 @@ if (process.env.NODE_ENV !== "production") {
   });
 }
 
+// Export the serverless handler
 export default serverless(app);
