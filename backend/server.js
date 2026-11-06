@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 dotenv.config();
 import nodemailer from "nodemailer";
 import fileUpload from "express-fileupload";
-import serverless from "serverless-http";
 
 const app = express();
 
@@ -97,4 +96,4 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 // Export the serverless handler
-export default serverless(app);
+export default app;

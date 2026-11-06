@@ -25,7 +25,7 @@ const joinArr = [
 function Careers() {
   const [submitted, setSubmitted] = useState(false);
 
-  const url = 'https://deposits-mysql-conducted-ignored.trycloudflare.com/send-application';
+  const url = 'https://smark-breo.vercel.app/send-application';
 
   const sendMail = async (e) => {
     e.preventDefault();
