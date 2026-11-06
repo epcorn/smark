@@ -1,9 +1,8 @@
-import React from "react";
 import { Box, Card, CardContent, Typography, Container } from "@mui/material";
 import { motion } from "framer-motion";
 import { about_us_Data } from "../data/about_us_Data";
 import { VscLightbulbSparkle } from "react-icons/vsc";
-import { FaRegHandshake, FaBullseye, FaRegEye } from "react-icons/fa6";
+import { FaRegHandshake, FaRegEye } from "react-icons/fa6";
 import { MdBalance } from "react-icons/md";
 import { FaGears } from "react-icons/fa6";
 import { GoGoal } from "react-icons/go";
@@ -57,7 +56,7 @@ function About_Us() {
         initial={"hidden"}
         whileInView="visible"
         sx={{
-          height: { xs: 200, sm: 350, md: 450 },
+          height: { xs: 200, sm: 350, md: 550 },
           width: "100%",
           objectFit: "",
           display: "block",
@@ -88,7 +87,7 @@ function About_Us() {
                 fontWeight: 700,
                 mb: 2,
                 color: "text.primary",
-                fontSize: { xs: "1.75rem", sm: "2.25rem", md: "2.5rem" },
+                fontSize: { xs: "1.75rem", sm: "2.25rem", md: "2.4rem" },
               }}>
               Company Overview
             </MotionTypo>
@@ -97,8 +96,9 @@ function About_Us() {
               variant="body1"
               sx={{
                 color: "text.secondary",
-                fontSize: { xs: "0.975rem", sm: "1.05rem" },
+                fontSize: { xs: "0.975rem", sm: "1.25rem" },
                 lineHeight: 1.75,
+                textAlign: "justify"
               }}>
               {about.overview}
             </MotionTypo>
@@ -192,7 +192,7 @@ function About_Us() {
                   <MotionTypo
                     variant="body1"
                     color="text.secondary"
-                    sx={{ lineHeight: 1.6 }}>
+                    sx={{ lineHeight: 1.6, textAlign: "justify" }}>
                     {item.desc}
                   </MotionTypo>
                 </CardContent>
@@ -262,7 +262,6 @@ function About_Us() {
               gap: 3,
             }}>
             {about?.core_value?.map((c, i) => {
-              // Safe fallback so component never throws an error if array length mismatch
               const IconComponent =
                 icons[i % icons.length] || VscLightbulbSparkle;
 
@@ -285,16 +284,16 @@ function About_Us() {
                     },
                   }}>
                   <CardContent sx={{ p: 3 }}>
-                    <Box sx={{ color: "#22d3ee", fontSize: "3rem", mb: 1.5 }}>
+                    <Box sx={{ color: "#22d3ee", fontSize: "3rem", mb: 1.5 }} className='flex gap-2 items-center'>
                       <IconComponent />
+                      <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: "#000" }}>
+                        {c.title}
+                      </Typography>
                     </Box>
-                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
-                      {c.title}
-                    </Typography>
                     <Typography
-                      variant="body2"
+                      variant="body1"
                       color="text.secondary"
-                      sx={{ lineHeight: 1.6 }}>
+                      sx={{ lineHeight: 1.6, textAlign: "justify" }}>
                       {c.desc}
                     </Typography>
                   </CardContent>
@@ -314,7 +313,7 @@ function About_Us() {
             viewport={{ once: true }}
             sx={{
               fontWeight: 700,
-              mb: 3,
+              mb: 1,
               fontSize: { xs: "1.75rem", sm: "2.25rem" },
             }}>
             Our Commitments
@@ -338,17 +337,17 @@ function About_Us() {
               }}>
               <MotionTypo
                 variant="body1"
-                sx={{ color: "text.primary", lineHeight: 1.7 }}>
+                sx={{ color: "text.primary", lineHeight: 1.7, textAlign: "justify" }}>
                 {about?.commits?.p1}
               </MotionTypo>
               <MotionTypo
                 variant="body1"
-                sx={{ color: "text.primary", lineHeight: 1.7 }}>
+                sx={{ color: "text.primary", lineHeight: 1.7, textAlign: "justify" }}>
                 {about?.commits?.p2}
               </MotionTypo>
               <MotionTypo
                 variant="body1"
-                sx={{ color: "text.primary", lineHeight: 1.7 }}>
+                sx={{ color: "text.primary", lineHeight: 1.7, textAlign: "justify" }}>
                 {about?.commits?.p3}
               </MotionTypo>
             </Box>
@@ -368,6 +367,7 @@ function About_Us() {
             />
           </Box>
         </Box>
+        <Typography variant="h3" sx={{ fontWeight: 700, textAlign:"center" }}>ISO Certificates</Typography>
         <Swiper
           modules={[Pagination, Navigation, Autoplay]}
           navigation={true}

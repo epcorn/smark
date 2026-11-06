@@ -22,8 +22,8 @@ const VINTAGE_BG = "#FBF9F5"; // Soft warm cream / parchment
 const VINTAGE_PAPER = "#F5F2EB"; // Subtle muted paper card background
 const DEEP_CHARCOAL = "#2B2825"; // Deep warm off-black text
 const MUTED_SAGE = "#5A7061"; // Subtle vintage sage green
-const TERRACOTTA_ACCENT = "#A6634B"; // Soft earthy terracotta highlight
-const WARM_BORDER = "rgba(166, 99, 75, 0.15)"; // Soft warm divider color
+const TERRACOTTA_ACCENT = "#A6634B";
+const WARM_BORDER = "rgba(166, 99, 75, 0.15)";
 
 function Academy() {
   const data = academyData;
@@ -131,6 +131,10 @@ function Academy() {
               borderRadius: "12px",
               border: `1px solid ${WARM_BORDER}`,
               overflow: "hidden",
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              gap: { xs: 2.5, md: 3.5 },
+              alignItems: { xs: "stretch", sm: "flex-start" },
             }}>
             <MotionBox
               variants={slideIn}
@@ -139,41 +143,50 @@ function Academy() {
               viewport={{ once: true }}
               component="img"
               src={data.about.img}
+              alt="About the Academy"
               sx={{
-                float: { sm: "left" },
-                width: { xs: "100%", sm: "42%" },
-                maxWidth: 380,
+                width: { xs: "100%", sm: "62%" },
+                maxWidth: { xs: "100%", sm: 380 },
                 aspectRatio: "16 / 9",
-                mr: { sm: 3.5 },
-                mb: 2,
                 objectFit: "cover",
                 borderRadius: "8px",
                 filter: "sepia(0.12) contrast(1.05)",
                 boxShadow: "0 8px 20px rgba(43, 40, 37, 0.08)",
+                flexShrink: 0,
               }}
             />
-            <Typography
-              sx={{
-                mb: 2,
-                lineHeight: 1.7,
-                fontSize: "1rem",
-                color: "#3A3734",
-              }}>
-              {data.header.para1}
-            </Typography>
-            <Typography
-              sx={{
-                mb: 2,
-                lineHeight: 1.7,
-                fontSize: "1rem",
-                color: "#3A3734",
-              }}>
-              {data.header.para2}
-            </Typography>
-            <Typography
-              sx={{ lineHeight: 1.7, fontSize: "1rem", color: "#3A3734" }}>
-              {data.header.para3}
-            </Typography>
+
+            <Box sx={{ flex: 1, minWidth: 0 }}>
+              <Typography
+                sx={{
+                  mb: 2,
+                  lineHeight: 1.7,
+                  fontSize: "1rem",
+                  color: "#3A3734",
+                  textAlign: "justify",
+                }}>
+                {data.header.para1}
+              </Typography>
+              <Typography
+                sx={{
+                  mb: 2,
+                  lineHeight: 1.7,
+                  fontSize: "1rem",
+                  color: "#3A3734",
+                  textAlign: "justify",
+                }}>
+                {data.header.para2}
+              </Typography>
+              <Typography
+                sx={{
+                  lineHeight: 1.7,
+                  fontSize: "1rem",
+                  color: "#3A3734",
+                  textAlign: "justify",
+                }}>
+                {data.header.para3}
+              </Typography>
+            </Box>
           </Paper>
         </MotionBox>
 
@@ -550,7 +563,7 @@ function Academy() {
                     </Typography>
                     <Typography
                       variant="body2"
-                      sx={{ color: '#5A5550', lineHeight: 1.6, fontSize: '0.95rem' }}
+                      sx={{ color: '#5A5550', lineHeight: 1.6, fontSize: '0.95rem', textAlign: "justify" }}
                     >
                       {ben.desc}
                     </Typography>

@@ -148,7 +148,7 @@ function Research() {
                 {philosophy.title}
               </Typography>
             </Stack>
-            <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+            <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.1rem', lineHeight: 1.7, textAlign: "justify" }}>
               {philosophy.description}
             </Typography>
           </Paper>
@@ -406,11 +406,11 @@ function Research() {
                   </Typography>
                 </Stack>
 
-                <Typography variant="h6" sx={{ color: '#86efac', mb: 2, fontWeight: 600 }}>
+                <Typography variant="h5" sx={{ color: '#86efac', mb: 2, fontWeight: 600 }}>
                   {biomimicking.subtitle}
                 </Typography>
 
-                <Typography sx={{ color: '#f0fdf4', lineHeight: 1.7, fontSize: '1rem' }}>
+                <Typography sx={{ color: '#f0fdf4', lineHeight: 1.7, fontSize: '1.2rem', textAlign: "justify" }}>
                   {biomimicking.description}
                 </Typography>
               </Box>
@@ -445,45 +445,45 @@ function Research() {
             viewport={{ once: true }}
             variant="h4"
             sx={{ fontWeight: 700, mb: 4, textAlign: 'center' }}
+
           >
             Research Areas
           </MotionTypo>
-          <Grid container spacing={3}>
+          <Box className='grid grid-cols-2 gap-2'>
             {researchAreas.map((area, idx) => (
-              <Grid item xs={12} sm={6} md={4} key={idx}>
-                <MotionBox
-                  variants={fadeInUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  sx={{ height: '100%' }}
+              <MotionBox
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                sx={{ height: '100%' }}
+
+              >
+                <Card
+                  elevation={0}
+                  sx={{
+                    height: '100%',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: 3,
+                    transition: 'transform 0.2s, box-shadow 0.2s',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: '0 10px 20px rgba(0,0,0,0.05)',
+                    },
+                  }}
                 >
-                  <Card
-                    elevation={0}
-                    sx={{
-                      height: '100%',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: 3,
-                      transition: 'transform 0.2s, box-shadow 0.2s',
-                      '&:hover': {
-                        transform: 'translateY(-4px)',
-                        boxShadow: '0 10px 20px rgba(0,0,0,0.05)',
-                      },
-                    }}
-                  >
-                    <CardContent sx={{ p: 3 }}>
-                      <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: 'primary.main' }}>
-                        {area.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
-                        {area.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </MotionBox>
-              </Grid>
+                  <CardContent sx={{ p: 3 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: 'primary.main' }}>
+                      {area.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                      {area.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </MotionBox>
             ))}
-          </Grid>
+          </Box>
         </Box>
 
         {/* Patent & Innovation Journey */}

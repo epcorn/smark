@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Box,
   Container,
@@ -9,16 +8,13 @@ import {
   TableCell,
   TableContainer,
   TableRow,
-  Typography,
-  Chip,
-  Divider,
-  Button,
+  Typography, Divider,
+  Button
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import { products_Data } from "../data/product_Data";
 import { fadeUp } from "../data/motionAnimation";
-import { saveAs } from 'file-saver';
 
 const BRAND_GREEN = "rgba(61, 206, 212)";
 const LIGHT_BG = "#F4F9F5";
@@ -79,7 +75,7 @@ function ProductDetails() {
           color: "#ffffff",
           overflow: "hidden",
         }}>
-        {/* Semi-transparent Banner Background */}
+
         {product?.banner && (
           <Box
             component="img"
@@ -88,10 +84,9 @@ function ProductDetails() {
             loading="eager"
             fetchPriority="high"
             sx={{
-              // position: "absolute",
               inset: 0,
               width: "100%",
-              height: { sm: 300, md: 500,lg:720 },
+              height: { sm: 300, md: 500, lg: 720 },
               maxHeight: 950,
               aspectRatio: 16 / 9,
               objectFit: "contain",
@@ -158,13 +153,13 @@ function ProductDetails() {
               transition={{ duration: 0.7 }}
               sx={{ flex: 1 }}
             >
-              <Typography variant="h5" sx={{ fontWeight: 700, color: BRAND_GREEN, mb: 2.5 }}>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: BRAND_GREEN, mb: 2.5 }}>
                 About the Product
               </Typography>
 
               <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
                 {[product?.para1, product?.para2, product?.para3].filter(Boolean).map((para, i) => (
-                  <Typography key={i} sx={{ color: "#4A5568", lineHeight: 1.8, fontSize: "1rem" }}>
+                  <Typography key={i} sx={{ color: "#000", lineHeight: 1.8, fontSize: "1rem", textAlign: "justify" }}>
                     {para}
                   </Typography>
                 ))}
@@ -205,7 +200,6 @@ function ProductDetails() {
                   width: "100%",
                   height: "100%",
                   objectFit: "contain",
-                  // border: "1px solid black",
                   transition: "transform 0.4s ease",
                   transform: id === "samarth-stick" ? "rotate(-90deg)" : id === "lizard-trap" ? "rotate(90deg)" : "rotate(0deg)",
                   "&:hover": {
@@ -234,7 +228,7 @@ function ProductDetails() {
               border: `1px solid rgba(61, 158, 89, 0.2)`,
             }}>
             <Typography
-              variant="h5"
+              variant="h4"
               sx={{
                 fontWeight: 700,
                 color: BRAND_GREEN,
@@ -247,16 +241,17 @@ function ProductDetails() {
 
             <Typography
               sx={{
-                color: "#334155",
+                color: "#000",
                 lineHeight: 1.8,
                 mb: 2,
                 fontSize: "1.05rem",
+                textAlign: "justify"
               }}>
               {product.overview.para1}
             </Typography>
             {product.overview.para2 && (
               <Typography
-                sx={{ color: "#64748B", lineHeight: 1.8, fontSize: "1rem" }}>
+                sx={{ color: "#000", textAlign: "justify", lineHeight: 1.8, fontSize: "1.05rem" }}>
                 {product.overview.para2}
               </Typography>
             )}
@@ -276,7 +271,7 @@ function ProductDetails() {
               viewport={{ once: true }}
               variants={fadeInUp}>
               <Typography
-                variant="h5"
+                variant="h4"
                 sx={{ fontWeight: 700, mb: 0.5, color: "#1E293B" }}>
                 Features
               </Typography>
@@ -293,13 +288,13 @@ function ProductDetails() {
                       borderLeft: `4px solid ${BRAND_GREEN}`,
                     }}>
                     <Typography
-                      variant="subtitle1"
+                      variant="h6"
                       sx={{ fontWeight: 700, color: BRAND_GREEN, mb: 0.5 }}>
                       {f.title}
                     </Typography>
                     <Typography
-                      variant="body2"
-                      sx={{ color: "#475569", lineHeight: 1.6 }}>
+                      variant="subtitle1"
+                      sx={{ color: "#000", lineHeight: 1.6 }}>
                       {f.desc}
                     </Typography>
                   </Paper>
@@ -318,8 +313,8 @@ function ProductDetails() {
             variants={fadeInUp}
             sx={{ py: 5 }}>
             <Typography
-              variant="h5"
-              sx={{ fontWeight: 700, mb: 0.5, color: "#1E293B" }}>
+              variant="h4"
+              sx={{ fontWeight: 700, mb: 1, color: "#1E293B" }}>
               Applications
             </Typography>
 
@@ -356,12 +351,11 @@ function ProductDetails() {
                     }}
                   />
                   <Typography
-                    variant="subtitle1"
-                    sx={{ fontWeight: 700, color: "#1E293B", mb: 0.5 }}>
+                    sx={{ fontWeight: 700, color: "#1E293B", my: 0.5, fontSize: "1.2rem" }}>
                     {app.title}
                   </Typography>
                   <Typography
-                    variant="body2"
+                    variant="body1"
                     sx={{ color: "#64748B", lineHeight: 1.6 }}>
                     {app.desc}
                   </Typography>
@@ -377,7 +371,7 @@ function ProductDetails() {
         {product?.benefit && (
           <Box sx={{ mb: 8 }}>
             <Typography
-              variant="h5"
+              variant="h4"
               sx={{ fontWeight: 700, mb: 3, color: "#1E293B" }}>
               Key Benefits
             </Typography>
@@ -422,13 +416,12 @@ function ProductDetails() {
                           fontWeight: 700,
                           mb: 1,
                           color: "#1E293B",
-                          fontSize: "1.05rem",
+                          fontSize: "1.4rem",
                         }}>
                         {b.title}
                       </Typography>
                       <Typography
-                        variant="body2"
-                        sx={{ color: "#64748B", lineHeight: 1.6 }}>
+                        sx={{ color: "#64748B", lineHeight: 1.6, fontSize: "1rem" }}>
                         {b.desc}
                       </Typography>
                     </Box>
@@ -474,11 +467,11 @@ function ProductDetails() {
                       }}>
                       <TableCell
                         sx={{
-                          color: BRAND_GREEN,
+                          color: "#000" || BRAND_GREEN,
                           fontWeight: 700,
                           width: { xs: "40%", md: "30%" },
                           py: 2,
-                          fontSize: "0.9rem",
+                          fontSize: "1.1rem",
                         }}>
                         {spec.type}
                       </TableCell>
@@ -486,7 +479,7 @@ function ProductDetails() {
                         sx={{
                           color: "#334155",
                           py: 2,
-                          fontSize: "0.95rem",
+                          fontSize: "1rem",
                         }}>
                         {spec.detail}
                       </TableCell>
@@ -498,6 +491,7 @@ function ProductDetails() {
           </MotionBox>
         )}
       </Container>
+
       {pdfUrl && (
         <>
           <Box

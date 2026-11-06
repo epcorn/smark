@@ -103,13 +103,13 @@ function Home_Page() {
             >
               <Typography
                 component="p"
-                variant="overline"
+                variant="subtitle1"
                 sx={{
                   color: "#159DA5",
                   fontWeight: 700,
                   letterSpacing: 0.5,
                   mb: 1,
-                  textTransform:"none"
+                  textTransform: "none"
                 }}
               >
                 ABOUT S Mark
@@ -169,7 +169,7 @@ function Home_Page() {
                   sx={{
                     color: "#159DA5",
                     fontWeight: 700,
-                    fontSize: "0.9rem",
+                    fontSize: "1.1rem",
                     letterSpacing: 0.5,
                     mb: 1.5,
                   }}
@@ -201,11 +201,11 @@ function Home_Page() {
                       component="p"
                       key={`${index}-${paragraph.slice(0, 20)}`}
                       sx={{
-                        color: "#526170",
                         fontSize: {
                           xs: "0.95rem",
                           md: "1.02rem",
                         },
+                        textAlign:"justify",
                         lineHeight: 1.9,
                         mb: 2,
                         "&:last-child": {
@@ -389,14 +389,14 @@ function Home_Page() {
                       }}
                     >
                       <Typography
-                        variant="h6"
+                        variant="h5"
                         sx={{ fontWeight: 700, mb: 1, color: "#1E293B" }}
                       >
                         {card.title}
                       </Typography>
                       <Typography
-                        variant="body2"
-                        sx={{ color: "#334155", lineHeight: 1.6 }}
+                        variant=""
+                        sx={{ color: "#334155", lineHeight: 1.6, fontSize:"1.1rem" }}
                       >
                         {card.desc}
                       </Typography>

@@ -206,7 +206,7 @@ function DesktopDropdown({ item }) {
     color: COLORS.text,
     textTransform: "none",
     fontWeight: 600,
-    fontSize: { sm: "0.8rem", md: "0.95rem" },
+    fontSize: { sm: "0.8rem", md: "1.05rem" },
     px: { sm: 1, md: 1.5 },
     borderRadius: 2,
     bgcolor: isActive ? `${COLORS.primary}80` : "transparent",

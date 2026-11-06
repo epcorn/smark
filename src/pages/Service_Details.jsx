@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { service_data } from "../data/service_Data";
 import {
@@ -14,9 +13,17 @@ import {
   Chip,
   Stack,
 } from "@mui/material";
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot
+} from '@mui/lab';
 
 // React Icons imports
-import { FaArrowLeft, FaRegCircleCheck } from "react-icons/fa6";
+import { FaArrowLeft } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
 import { home_page } from "../data/home_page_Data";
 import {
@@ -30,7 +37,6 @@ import {
   stagger,
 } from "../data/motionAnimation";
 import { motion } from "framer-motion";
-import { saveAs } from 'file-saver';
 
 function Service_Details() {
   const { id } = useParams();
@@ -75,7 +81,7 @@ function Service_Details() {
           flexDirection: "column",
           gap: 8,
         }}>
-        {/* Ambient Background Glow Effect */}
+
         <MotionBox
           component="img"
           variants={imgAnimation}
@@ -106,7 +112,6 @@ function Service_Details() {
               }}>
               <Chip
                 label={service.heading}
-                color="secondary"
                 size="medium"
                 sx={{
                   fontWeight: 700,
@@ -116,6 +121,7 @@ function Service_Details() {
                   boxShadow: "0 4px 14px rgba(0,0,0,0.15)",
                   backdropFilter: "blur(4px)",
                 }}
+                className="bg-[#3DCED4]!"
               />
             </MotionBox>
 
@@ -127,7 +133,7 @@ function Service_Details() {
                   fontWeight: 800,
                   mb: 3,
                   maxWidth: "900px",
-                  fontSize: { xs: "2.25rem", sm: "2.75rem", md: "3.5rem" },
+                  fontSize: { xs: "1.90rem", sm: "2.1rem", md: "2.2rem", lg: "2.4rem" },
                   lineHeight: 1.15,
                   letterSpacing: "-0.02em",
                 }}>
@@ -146,6 +152,7 @@ function Service_Details() {
                   lineHeight: 1.7,
                   fontSize: { xs: "1rem", md: "1.15rem" },
                 }}
+                className="text-justify"
                 dangerouslySetInnerHTML={{ __html: service.summery }}
               />
             </MotionBox>
@@ -167,7 +174,7 @@ function Service_Details() {
             <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>
               Key Objectives
             </Typography>
-            <Grid container spacing={2}>
+            <Box className='grid grid-cols-2 gap-2'>
               {service.keys.map((key, index) => {
                 const parts = key?.text?.split("–");
                 const title = parts[0]?.trim();
@@ -233,7 +240,7 @@ function Service_Details() {
 
                 );
               })}
-            </Grid>
+            </Box>
           </Paper>
         )}
 
@@ -324,16 +331,16 @@ function Service_Details() {
                     background: 'linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75))',
                   }}
                 >
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>
+                  <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
                     What We Help Protect & Identify
                   </Typography>
                   <Stack spacing={2.5}>
                     {itemsProtected.map((item, idx) => (
                       <Box key={idx}>
-                        <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#ffffff' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#ffffff' }}>
                           {item.title}
                         </Typography>
-                        <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.6 }}>
+                        <Typography sx={{ color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.6, fontSize: "1.1rem" }}>
                           {item.label}
                         </Typography>
                       </Box>
@@ -345,34 +352,39 @@ function Service_Details() {
           )}
 
           {keyTechOrComponents && keyTechOrComponents.length > 0 && (
-            <Grid item xs={12} md={6}>
-              <Paper
-                elevation={0}
+            <>
+              <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>
+                Key Components & Technology
+              </Typography>
+
+              <Timeline
+                position="right"
                 sx={{
-                  p: 4,
-                  height: '100%',
-                  borderRadius: 3,
-                  border: '1px solid #e2e8f0',
-                  bgcolor: '#ffffff',
+                  p: 0,
+                  '& .MuiTimelineItem-root:before': { flex: 0, p: 0 } // Removes default left spacing on desktop
                 }}
               >
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>
-                  Key Components & Technology
-                </Typography>
-                <Stack spacing={2.5} divider={<Divider flexItem />}>
-                  {keyTechOrComponents.map((tech, idx) => (
-                    <Box key={idx}>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                        {tech.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
-                        {tech.label}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Stack>
-              </Paper>
-            </Grid>
+                {keyTechOrComponents.map((tech, idx) => (
+                  <TimelineItem key={idx}>
+                    <TimelineSeparator>
+                      <TimelineDot color="primary" variant="outlined" sx={{ width: 12, height: 12, borderWidth: 3 }} />
+                      {idx < keyTechOrComponents.length - 1 && <TimelineConnector sx={{ bgcolor: 'divider' }} />}
+                    </TimelineSeparator>
+
+                    <TimelineContent sx={{ py: '12px', px: 2 }}>
+                      <Box sx={{ mb: 2 }}>
+                        <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'text.primary' }}>
+                          {tech.title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                          {tech.label}
+                        </Typography>
+                      </Box>
+                    </TimelineContent>
+                  </TimelineItem>
+                ))}
+              </Timeline>
+            </>
           )}
         </Grid>
 

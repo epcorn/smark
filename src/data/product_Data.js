@@ -341,7 +341,7 @@ export const products_Data = {
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786432191/S_mark/product_imgs/Flyban/Commercial_Establishments_fzn1iz.webp",
           title: "Commercial Establishments",
-          desc: "Offices, hotels, restaurants, cafés, retail stores, and food-service areas.",
+          desc: "Offices, hotels, restaurants, cafes, retail stores, and food-service areas.",
         },
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431944/S_mark/product_imgs/Flyban/Industrial_Facilities_sp6uoz.png",
@@ -438,7 +438,7 @@ export const products_Data = {
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431949/S_mark/product_imgs/Lizzpro/Commercial_Spaces_gv6hil.jpg",
           title: "Commercial Spaces",
-          desc: "Offices, hotels, restaurants, cafés, retail stores, and shopping malls.",
+          desc: "Offices, hotels, restaurants, cafes, retail stores, and shopping malls.",
         },
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431938/S_mark/product_imgs/Lizzpro/Healthcare_Educational_Facilities_jojftm.jpg",
@@ -741,7 +741,7 @@ export const products_Data = {
         },
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431941/S_mark/product_imgs/Lizard%20Trap/Restaurants_Hotels_Caf%C3%A9s_ovghsr.jpg",
-          title: "Restaurants, Hotels & Cafés",
+          title: "Restaurants, Hotels & Cafes",
           desc: "Dining, kitchen, and hospitality areas.",
         },
         {
@@ -842,7 +842,7 @@ export const products_Data = {
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431935/S_mark/product_imgs/Snapper%20Mosquito%20Trapper/Commercial_Establishments_askgh5.jpg",
           title: "Commercial Establishments",
-          desc: "Offices, hotels, restaurants, cafés, and retail outlets.",
+          desc: "Offices, hotels, restaurants, cafes, and retail outlets.",
         },
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431935/S_mark/product_imgs/Snapper%20Mosquito%20Trapper/Healthcare_Educational_Facilities_oshvlb.jpg",
@@ -938,7 +938,7 @@ export const products_Data = {
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431930/S_mark/product_imgs/Snapper%20Insect%20Trapper/Food_Hospitality_mzjova.jpg",
           title: "Food & Hospitality",
-          desc: "Restaurants, hotels, cafés, kitchens, bakeries, and food-service areas.",
+          desc: "Restaurants, hotels, cafes, kitchens, bakeries, and food-service areas.",
         },
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431930/S_mark/product_imgs/Snapper%20Insect%20Trapper/Commercial_Buildings_irisfa.jpg",
@@ -1072,7 +1072,7 @@ export const products_Data = {
         },
       ],
       specs: [
-        { type: "Product Name", detail: "® Spider Machine" },
+        { type: "Product Name", detail: "Spider Machine ®" },
         { type: "Product Type", detail: "Spider Monitoring & Control Device" },
         { type: "Configuration", detail: "3 Tubes + 1 Snapper Sheet" },
         { type: "Target Pest", detail: "Spiders" },
@@ -1129,7 +1129,7 @@ export const products_Data = {
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431943/S_mark/product_imgs/Insect%20Killer/Food_Hospitality_eoiga6.jpg",
           title: "Food & Hospitality",
-          desc: "Restaurants, hotels, cafés, bakeries, and commercial kitchens.",
+          desc: "Restaurants, hotels, cafes, bakeries, and commercial kitchens.",
         },
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431946/S_mark/product_imgs/Insect%20Killer/Food_Processing_Storage_ur7p6l.png",
@@ -1523,7 +1523,7 @@ export const products_Data = {
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431929/S_mark/product_imgs/Samarth%20incense%20stand/Commercial_Areas_pgwq1o.jpg",
           title: "Commercial Spaces",
-          desc: "Shops, offices, cafés, and restaurants.",
+          desc: "Shops, offices, cafes, and restaurants.",
         },
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431932/S_mark/product_imgs/Samarth%20incense%20stand/Hospitality_lnh889.jpg",
@@ -1612,7 +1612,7 @@ export const products_Data = {
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431929/S_mark/product_imgs/Samarth%20incense%20stand/Commercial_Areas_pgwq1o.jpg",
           title: "Commercial Areas",
-          desc: "Shops, cafés, restaurants, and outdoor seating.",
+          desc: "Shops, cafes, restaurants, and outdoor seating.",
         },
         {
           img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786431932/S_mark/product_imgs/Samarth%20incense%20stand/Hospitality_lnh889.jpg",

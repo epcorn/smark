@@ -108,4 +108,5 @@ export const navItems = [
   { label: "Academy", href: "/academy" },
   { label: "Research", href: "/research" },
   { label: "About Us", href: "/about_us" },
+  { label: "Join S Mark", href: "/careers" },
 ];

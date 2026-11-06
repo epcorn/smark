@@ -1,22 +1,20 @@
 import { lazy, Suspense, useEffect } from 'react';
 import NavigationBar from './components/NavigationBar';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
-import Lenis from 'lenis';
-import ScrollToTop from './components/ScrollToTop';
-import { Skeleton } from '@mui/material';
-
 import Home_Page from './pages/Home_Page';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import { Skeleton } from '@mui/material';
+import { Analytics } from "@vercel/analytics/react";
+import Careers from './pages/Careers';
 
+import Lenis from 'lenis';
 
 const About_Us = lazy(() => import('./pages/About_Us'))
 const ProductDetails = lazy(() => import('./pages/ProductDetails'))
 const Service_Details = lazy(() => import('./pages/Service_Details'))
 const Academy = lazy(() => import('./pages/Academy'))
 const Research = lazy(() => import('./pages/Research'))
-import { Analytics } from "@vercel/analytics/react"
-
-
 
 export function Layout() {
 
@@ -43,7 +41,7 @@ export function Layout() {
     <>
       <Analytics />
       <ScrollToTop />
-      <div className="sticky -top-10 z-50 transition-all duration-300 ease-in-out bg-white/90 backdrop-blur-md shadow-md">
+      <div className="sticky -top-7 z-50 transition-all duration-300 ease-in-out bg-white/90 backdrop-blur-md shadow-md">
         <NavigationBar />
       </div>
       <main>
@@ -65,13 +63,12 @@ function App() {
 
         {/* services */}
         <Route path='services/:id' element={<Service_Details />} />
-
         <Route path='/products/:category/:id' element={<ProductDetails />} />
-
         <Route path='/loader' element={<PageLoader />} />
         <Route path='/academy' element={<Academy />} />
         <Route path='/research' element={<Research />} />
         <Route path='/about_us' element={<About_Us />} />
+        <Route path='/careers' element={<Careers />} />
       </Route>
       <Route path='*' element={<Navigate to={'/'} replace />} />
     </Routes>

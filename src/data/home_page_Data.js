@@ -130,5 +130,5 @@ export const home_page = {
 
   contact: "+919223453450",
   email: "smark.in.co@gmail.com",
-  address: "",
+  address: "B2-Hasmukh Nagar, 21-Tagore Rd., Santacruz West, Mumbai, India",
 };
