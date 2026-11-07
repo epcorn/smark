@@ -61,7 +61,6 @@ function App() {
       <Route path='/' element={<Layout />}>
         <Route index element={<Home_Page />} />
 
-        {/* services */}
         <Route path='services/:id' element={<Service_Details />} />
         <Route path='/products/:category/:id' element={<ProductDetails />} />
         <Route path='/loader' element={<PageLoader />} />

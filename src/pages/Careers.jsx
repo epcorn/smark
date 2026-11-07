@@ -25,7 +25,7 @@ const joinArr = [
 function Careers() {
   const [submitted, setSubmitted] = useState(false);
 
-  const url = 'https://smark-breo.vercel.app/send-application';
+  const url = window.location.hostname === "localhost" ? "http://localhost:5000/send-application" : 'https://smark-breo.vercel.app/send-application';
 
   const sendMail = async (e) => {
     e.preventDefault();
@@ -113,12 +113,12 @@ function Careers() {
 
       {/* Conditional Rendering: Show Success Card or Contact Form */}
       {submitted ? (
-        <Paper 
-          elevation={2} 
-          sx={{ 
-            p: 5, 
-            textAlign: 'center', 
-            borderRadius: 3, 
+        <Paper
+          elevation={2}
+          sx={{
+            p: 5,
+            textAlign: 'center',
+            borderRadius: 3,
             bgcolor: 'background.paper',
             border: '1px solid',
             borderColor: 'divider',
