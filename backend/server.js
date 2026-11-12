@@ -7,6 +7,7 @@ import fileUpload from "express-fileupload";
 import morgan from "morgan";
 import { google } from "googleapis";
 import { v2 as cloudinary } from "cloudinary";
+import path from "path";
 
 const app = express();
 
@@ -46,11 +47,24 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-async function uploadFile(filePath) {
+async function uploadFile(filePath, originalName) {
+  const ext = path.extname(originalName).toLowerCase();
+
+  if (![".pdf", ".docx"].includes(ext)) {
+    throw new Error("Only PDF and DOCX files are allowed");
+  }
+
+  const baseName = path
+    .basename(originalName, ext)
+    .replace(/[^a-zA-Z0-9_-]/g, "_");
+
   try {
     const result = await cloudinary.uploader.upload(filePath, {
-      resource_type: "auto",
+      resource_type: "raw",
       folder: "smark_resumes",
+      public_id: `${baseName}_${Date.now()}${ext}`,
+      use_filename: false,
+      unique_filename: false,
     });
     return result.secure_url;
   } catch (error) {
@@ -66,7 +80,7 @@ app.get("/test", (req, res) => {
 });
 
 // for converting json file into base64
-//$b64 = [Convert]::ToBase64String([IO.File]::ReadAllBytes((Resolve-Path ".\google-credentials.json").Path)) 
+//$b64 = [Convert]::ToBase64String([IO.File]::ReadAllBytes((Resolve-Path ".\google-credentials.json").Path))
 //Add-Content -Path ".env" -Value "GOOGLE_SERVICE_ACCOUNT_B64=$b64" -Encoding utf8
 
 function getServiceAccount() {
@@ -101,7 +115,11 @@ async function appendToGoogleSheet(data) {
       requestBody: {
         values: [
           [
-            new Date().toLocaleString(),
+            new Date().toLocaleString("en-IN", {
+              dateStyle: "long",
+              timeStyle: "medium",
+              timeZone: "Asia/Kolkata",
+            }),
             data.name,
             data.email,
             data.contact,
@@ -143,7 +161,7 @@ app.post("/send-application", async (req, res) => {
     if (req.files && req.files.resume) {
       const uploadedFile = req.files.resume;
 
-      resumeUrl = await uploadFile(uploadedFile.tempFilePath);
+      resumeUrl = await uploadFile(uploadedFile.tempFilePath, uploadedFile.name);
 
       attachments.push({
         filename: uploadedFile.name,
@@ -175,7 +193,7 @@ app.post("/send-application", async (req, res) => {
 
     // Execute mail delivery and Google Sheet logging concurrently
     await Promise.all([
-      // transporter.sendMail(mailOptions),
+      transporter.sendMail(mailOptions),
       appendToGoogleSheet({
         name,
         email,
