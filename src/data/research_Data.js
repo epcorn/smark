@@ -88,7 +88,7 @@ export const research_data = {
       "S Mark Research welcomes collaboration with universities, colleges, research institutions, laboratories, industries, scientists, technology companies, and subject-matter experts.",
     opportunities: [
       "Joint Research Projects",
-      "Academic Research",
+      "Learning Research",
       "Field Studies",
     ],
     cta: "Collaborate with S Mark Research to turn ideas and scientific knowledge into practical solutions.",

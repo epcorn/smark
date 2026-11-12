@@ -64,7 +64,7 @@ function App() {
         <Route path='services/:id' element={<Service_Details />} />
         <Route path='/products/:category/:id' element={<ProductDetails />} />
         <Route path='/loader' element={<PageLoader />} />
-        <Route path='/academy' element={<Academy />} />
+        <Route path='/learning' element={<Academy />} />
         <Route path='/research' element={<Research />} />
         <Route path='/about_us' element={<About_Us />} />
         <Route path='/careers' element={<Careers />} />

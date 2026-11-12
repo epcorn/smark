@@ -18,10 +18,10 @@ import { GiArchiveResearch } from "react-icons/gi";
 const certificationIcons = [VscGraphLine, PiCertificateDuotone, FaRegHandshake, FaBookTanakh, GiArchiveResearch]
 
 // Vintage Theme Palette & Typography Constants
-const VINTAGE_BG = "#FBF9F5"; // Soft warm cream / parchment
-const VINTAGE_PAPER = "#F5F2EB"; // Subtle muted paper card background
-const DEEP_CHARCOAL = "#2B2825"; // Deep warm off-black text
-const MUTED_SAGE = "#5A7061"; // Subtle vintage sage green
+const VINTAGE_BG = "#FBF9F5";
+const VINTAGE_PAPER = "#F5F2EB";
+const DEEP_CHARCOAL = "#2B2825";
+const MUTED_SAGE = "#5A7061";
 const TERRACOTTA_ACCENT = "#A6634B";
 const WARM_BORDER = "rgba(166, 99, 75, 0.15)";
 
@@ -120,7 +120,7 @@ function Academy() {
               mb: 3,
               color: DEEP_CHARCOAL,
             }}>
-            About the Academy
+            About the Learning
           </Typography>
 
           <Paper

@@ -1,5 +1,4 @@
 export const home_page = {
-  
   mainTitle: "S Mark",
   subtitle: "Science-Driven Innovation for a Sustainable Future",
   paragraph1: [
@@ -9,7 +8,7 @@ export const home_page = {
   highlights: [
     "Sustainable pest management solutions",
     "Industrial IoT & smart technologies",
-    "Academic and research collaborations",
+    "Learning and research collaborations",
     "Capacity & skill development",
     "Botanical and green technology platforms",
     "Building the Future of Sustainable Pest Management",
@@ -22,7 +21,7 @@ export const home_page = {
     },
     {
       icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786359580/S_mark/home%20icons/Academy_Coolaboration_1_t3urwf.png",
-      title: "Academic & Research Collaboration",
+      title: "Learning & Research Collaboration",
       desc: "We partner with universities, research institutions, and industry experts to drive new innovative ideas and promote scientific innovation, technology development, and knowledge sharing.",
     },
     {
@@ -37,7 +36,7 @@ export const home_page = {
     },
   ],
   researchInnovtion:
-    "Driving Innovation Through Science <br /><br /> Innovation is at the heart of everything we do. Our research focuses on developing practical, science-based technologies that combine engineering, botanical formulations, and environmentally responsible design to solve modern pest management challenges.<br /><br /> Through continuous research, scientific validation, and collaboration with academic institutions, we create solutions that are effective, sustainable, and aligned with industry standards.",
+    "Driving Innovation Through Science <br /><br /> Innovation is at the heart of everything we do. Our research focuses on developing practical, science-based technologies that combine engineering, botanical formulations, and environmentally responsible design to solve modern pest management challenges.<br /><br /> Through continuous research, scientific validation, and collaboration with learning institutions, we create solutions that are effective, sustainable, and aligned with industry standards.",
   focus: {
     img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786361532/S_mark/home%20icons/Our_Research_Focus_pvxgzc.png",
     points: [
@@ -101,9 +100,9 @@ export const home_page = {
     },
     {
       id: 3,
-      question: "What is S Mark Academy?",
+      question: "What is S Mark Learning?",
       answer:
-        "S Mark Academy provides  professional training, skill development, certification courses, industry workshops, practical learning, and college collaboration programs  to develop skills and knowledge in pest management and related fields.",
+        "S Mark Learning provides  professional training, skill development, certification courses, industry workshops, practical learning, and college collaboration programs  to develop skills and knowledge in pest management and related fields.",
     },
     {
       id: 4,

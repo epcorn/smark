@@ -2,7 +2,7 @@ export const about_us_Data = {
   banner:
     "https://res.cloudinary.com/djc8opvcg/image/upload/v1786361199/S_mark/aboutus/About_Us_banner_image_avtj2v.webp",
   overview:
-    "S Mark is an innovation-driven organization focused on developing science-based, sustainable, and environmentally responsible pest management solutions. Through research, technology, industrial innovation, and academic collaboration, we deliver practical solutions for commercial, industrial, and institutional sectors",
+    "S Mark is an innovation-driven organization focused on developing science-based, sustainable, and environmentally responsible pest management solutions. Through research, technology, industrial innovation, and learning collaboration, we deliver practical solutions for commercial, industrial, and institutional sectors",
   overviewImg:
     "https://res.cloudinary.com/djc8opvcg/image/upload/v1786352011/S_mark/aboutus/Smark_Company_Overview_wpo1km.webp",
   our_vision: {
@@ -13,7 +13,7 @@ export const about_us_Data = {
     title: "Founder’s Message",
     name: "Dr. H. C. Stelson F. Quadros",
     msg: `At <strong>S Mark</strong>, <span style="font-family: 'Montserrat', sans-mono; font-weight: 700; color: #2a6d0a;">
-  I Dr. H. C. Stelson F. Quadros </span> , believe that the future of pest management lies in science, innovation, education, and sustainability with decades of experience in pest management, research, training, and technology, my vision is to develop scientifically validated, practical, and responsible solutions that create real-world impact. Through Research, Academy, and Services, S Mark brings together knowledge, innovation, and industry expertise to shape the next generation of pest management and build a safer, healthier, and more sustainable future.`,
+  I Dr. H. C. Stelson F. Quadros </span> , believe that the future of pest management lies in science, innovation, education, and sustainability with decades of experience in pest management, research, training, and technology, my vision is to develop scientifically validated, practical, and responsible solutions that create real-world impact. Through Research, Learning, and Services, S Mark brings together knowledge, innovation, and industry expertise to shape the next generation of pest management and build a safer, healthier, and more sustainable future.`,
     img: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786526968/S_mark/aboutus/Stelson_Sir_Image_sr8ndm.png",
   },
   our_mission: {
@@ -37,7 +37,7 @@ export const about_us_Data = {
     },
     {
       title: "Collaboration",
-      desc: "We believe meaningful innovation is achieved through partnerships with academic institutions committed to bringing teaching, learning to innovative minds, industry experts, and technology savvy organizations.",
+      desc: "We believe meaningful innovation is achieved through partnerships with learning institutions committed to bringing teaching, learning to innovative minds, industry experts, and technology savvy organizations.",
     },
     {
       title: "Integrity",
@@ -50,7 +50,7 @@ export const about_us_Data = {
   ],
   commits: {
     p1: "At S Mark, we are committed to advancing science-based innovation that contributes to safer, healthier, and more sustainable environments.",
-    p2: "Our commitment extends beyond product development to include continuous research, environmentally responsible technologies, academic collaboration, and professional capacity building. We strive to create practical solutions that reduce environmental impact while improving operational efficiency and supporting long-term sustainability and equally develop the industry at a national level with global alliances allowing the industry to benefit truly from this collaborative approach.",
+    p2: "Our commitment extends beyond product development to include continuous research, environmentally responsible technologies, learning collaboration, and professional capacity building. We strive to create practical solutions that reduce environmental impact while improving operational efficiency and supporting long-term sustainability and equally develop the industry at a national level with global alliances allowing the industry to benefit truly from this collaborative approach.",
     p3: "Through ongoing investment in innovation, engineering, and scientific validation, we aim to empower industries with reliable technologies that address today's challenges while preparing for the needs of tomorrow.",
   },
   commitImg:

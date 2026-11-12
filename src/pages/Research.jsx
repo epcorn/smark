@@ -195,7 +195,7 @@ function Research() {
                   </Box>
 
                   <Typography
-                    variant="h5"
+                    variant="h4"
                     sx={{
                       fontWeight: 700,
                       lineHeight: 1.2,
@@ -207,11 +207,12 @@ function Research() {
 
                 {/* Description */}
                 <Typography
-                  variant="body2"
+                  variant="body1"
                   color="text.secondary"
                   sx={{
                     mb: 3,
                     lineHeight: 1.6,
+                    fontSize: "1.2rem"
                   }}
                 >
                   {scientificValidation.description}
@@ -265,7 +266,7 @@ function Research() {
                           </Box>
 
                           <Typography
-                            variant="body2"
+                            variant="body1"
                             fontWeight={500}
                             sx={{
                               lineHeight: 1.5,
@@ -335,16 +336,16 @@ function Research() {
               >
                 <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 1 }}>
                   <Box sx={{ color: '#10b981', display: 'flex' }}>
-                    <FaLeaf size={24} />
+                    <FaLeaf size={26} />
                   </Box>
-                  <Typography variant="h5" sx={{ fontWeight: 700 }}>
+                  <Typography variant="h4" sx={{ fontWeight: 700 }}>
                     {greenTechnology.title}
                   </Typography>
                 </Stack>
-                <Typography variant="subtitle2" color="primary" sx={{ mb: 1, fontWeight: 600 }}>
+                <Typography variant="subtitle1" color="primary" sx={{ mb: 1, fontWeight: 600 }}>
                   {greenTechnology.subtitle}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 3, lineHeight: 1.6 }}>
+                <Typography variant="body1" color="text.secondary" sx={{ mb: 3, lineHeight: 1.6, fontSize: "1.2rem" }}>
                   {greenTechnology.description}
                 </Typography>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -353,8 +354,8 @@ function Research() {
                       key={idx}
                       label={area}
                       variant="outlined"
-                      size="small"
-                      sx={{ borderRadius: 1.5, borderColor: '#cbd5e1' }}
+                      size="medium"
+                      sx={{ borderRadius: 1.5, borderColor: '#cbd5e1', fontSize: "1rem" }}
                     />
                   ))}
                 </Box>
@@ -473,10 +474,10 @@ function Research() {
                   }}
                 >
                   <CardContent sx={{ p: 3 }}>
-                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: 'primary.main' }}>
+                    <Typography variant="h5" sx={{ fontWeight: 600, mb: 1, color: 'primary.main' }}>
                       {area.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                    <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
                       {area.description}
                     </Typography>
                   </CardContent>
@@ -561,23 +562,24 @@ function PatentInnovation({ MotionBox, patentAndInnovation }) {
             {patentAndInnovation.title}
           </Typography>
         </Stack>
-        <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 4 }}>
+        <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 4, fontSize:"1.1rem" }}>
           {patentAndInnovation.subtitle} – {patentAndInnovation.description}
         </Typography>
 
         {/* Workflow Stepper Flow */}
         <Box sx={{ mb: 4 }}>
-          <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 2, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+          <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 2, textTransform: 'uppercase', letterSpacing: 0.5, fontSize:"1.5rem" }}>
             Innovation Pathway
           </Typography>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, alignItems: 'center' }}>
             {patentAndInnovation.workflow.map((step, idx) => (
               <React.Fragment key={idx}>
-                <Chip
+                <Chip 
                   label={`${idx + 1}. ${step}`}
                   color="primary"
                   variant={filled.id === step ? 'filled' : 'outlined'}
-                  sx={{ fontWeight: 600 }}
+                  size='medium'
+                  sx={{ fontWeight: 600, fontSize:"1rem" }}
                   onClick={() => setFilled({ id: step, status: true })}
                 />
                 {idx < patentAndInnovation.workflow.length - 1 && (
@@ -592,15 +594,15 @@ function PatentInnovation({ MotionBox, patentAndInnovation }) {
 
         <Divider sx={{ my: 3 }} />
 
-        <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 2, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+        <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, textTransform: 'uppercase', letterSpacing: 0.5 }}>
           Showcase Areas
         </Typography>
         <Grid container spacing={1.5}>
           {patentAndInnovation.showcaseItems.map((item, idx) => (
             <Grid item xs={12} sm={6} md={4} key={idx}>
-              <Stack direction="row" spacing={1} alignItems="center">
+              <Stack direction="row" spacing={1} alignItems="center" sx={{display:'flex', alignItems:"center",}}>
                 <FaCircleCheck color="#0284c7" size={14} />
-                <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                <Typography variant="body2" sx={{ fontWeight: 500, fontSize:"1rem"}} >
                   {item}
                 </Typography>
               </Stack>
