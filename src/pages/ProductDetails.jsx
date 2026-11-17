@@ -17,7 +17,7 @@ import { products_Data } from "../data/product_Data";
 import { fadeUp } from "../data/motionAnimation";
 
 const BRAND_GREEN = "rgba(61, 206, 212)";
-const LIGHT_BG = "#F4F9F5";
+const LIGHT_BG = "#fcfcfc";
 
 // Motion Wrappers
 const MotionBox = motion.create(Box);
@@ -443,8 +443,8 @@ function ProductDetails() {
             viewport={{ once: true }}
             variants={fadeInUp}>
             <Typography
-              variant="h5"
-              sx={{ fontWeight: 700, mb: 2.5, color: "#1E293B" }}>
+              variant="h4"
+              sx={{ fontWeight: 700, mb: 3, color: "#1E293B" }}>
               Specifications
             </Typography>
 

@@ -11,7 +11,7 @@ function Footer() {
 
       <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-10">
         <div className="flex flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left">
-          
+
           {/* Brand and copyright description */}
           <div className="max-w-xl">
             <a
@@ -31,37 +31,39 @@ function Footer() {
           {/* Contact details & Address */}
           {(contact || email || address) && (
             <div className="flex flex-col items-center md:items-start gap-4">
-              
+
               {/* Call & Email Cards */}
               <address className="flex flex-col items-center gap-3 not-italic sm:flex-row sm:flex-wrap sm:justify-end sm:gap-4">
                 {contact && (
-                  <a
-                    href={`tel:${String(contact).replace(/[^\d+]/g, "")}`}
+                  <div
                     className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition hover:border-[#3DCED4]/60 hover:bg-white/10"
                   >
-                    <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#3DCED4]/15 text-[#3DCED4] transition group-hover:bg-[#3DCED4] group-hover:text-[#102A43]">
-                      <FaPhoneAlt size={15} />
-                    </span>
+                    <a href={`tel:${String(contact).replace(/[^\d+]/g, "")}`}>
+                      <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#3DCED4]/15 text-[#3DCED4] transition group-hover:bg-[#3DCED4] group-hover:text-[#102A43]">
+                        <FaPhoneAlt size={15} />
+                      </span>
+                    </a>
                     <span className="text-left">
                       <span className="block text-xs text-slate-400">Call us</span>
                       <span className="text-sm font-semibold text-white">{contact}</span>
                     </span>
-                  </a>
+                  </div>
                 )}
 
                 {email && (
-                  <a
-                    href={`mailto:${email}`}
+                  <div
                     className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition hover:border-[#81D959]/60 hover:bg-white/10"
                   >
-                    <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#81D959]/15 text-[#81D959] transition group-hover:bg-[#81D959] group-hover:text-[#102A43]">
-                      <FaEnvelope size={15} />
-                    </span>
+                    <a href={`mailto:${email}`}>
+                      <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#81D959]/15 text-[#81D959] transition group-hover:bg-[#81D959] group-hover:text-[#102A43]">
+                        <FaEnvelope size={15} />
+                      </span>
+                    </a>
                     <span className="text-left">
                       <span className="block text-xs text-slate-400">Email us</span>
                       <span className="break-all text-sm font-semibold text-white">{email}</span>
                     </span>
-                  </a>
+                  </div>
                 )}
               </address>
 

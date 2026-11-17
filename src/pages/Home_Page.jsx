@@ -356,7 +356,7 @@ function Home_Page() {
                   variants={cardPop}
                   sx={{
                     perspective: "1000px",
-                    height: "220px",
+                    height: { xs: "200px", sm: "220px", md: "240px" },
                     "&:hover .flip-card-inner": {
                       transform: "rotateX(180deg)",
                     },
@@ -383,19 +383,39 @@ function Home_Page() {
                         borderRadius: 3,
                         backfaceVisibility: "hidden",
                         WebkitBackfaceVisibility: "hidden",
-                        p: {sm:2,md:3},
+                        p: { xs: 2, sm: 2.5, md: 3 },
                         display: "flex",
                         flexDirection: "column",
+                        justifyContent: "center",
+                        overflow: "hidden",
                       }}
                     >
                       <Typography
-                        sx={{ fontWeight: 700, mb: 1, color: "#1E293B", fontSize:{sm:"1rem",md:"1.25rem"} }}
+                        sx={{
+                          fontWeight: 700,
+                          mb: 1,
+                          color: "#1E293B",
+                          fontSize: "clamp(1rem, 1.5vw + 0.5rem, 1.25rem)",
+                          lineHeight: 1.3,
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                        }}
                       >
                         {card.title}
                       </Typography>
+
                       <Typography
-                        variant=""
-                        sx={{ color: "#334155", lineHeight: 1.6, fontSize: { xs: "0.9rem", md: "1.1rem" } }}
+                        sx={{
+                          color: "#334155",
+                          lineHeight: 1.55,
+                          fontSize: "clamp(0.875rem, 1.1vw + 0.4rem, 1.05rem)",
+                          display: "-webkit-box",
+                          WebkitLineClamp: { xs: 4, sm: 5 },
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                        }}
                       >
                         {card.desc}
                       </Typography>
@@ -431,6 +451,7 @@ function Home_Page() {
               ))}
             </MotionBox>
           </Box>
+
 
           {/* Our Research Focus Section */}
           <Box sx={{ mb: { xs: 6, md: 8 } }}>

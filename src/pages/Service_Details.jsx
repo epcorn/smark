@@ -3,15 +3,9 @@ import { service_data } from "../data/service_Data";
 import {
   Box,
   Container,
-  Typography,
-  Grid,
-  Card,
+  Typography, Card,
   CardContent,
-  Button,
-  Divider,
-  Paper,
-  Chip,
-  Stack,
+  Button, Paper, Stack
 } from "@mui/material";
 import {
   Timeline,
@@ -33,8 +27,7 @@ import {
   fadeUp,
   imgAnimation,
   ltr,
-  rtl,
-  stagger,
+  rtl
 } from "../data/motionAnimation";
 import { motion } from "framer-motion";
 
@@ -100,47 +93,50 @@ function Service_Details() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}>
           <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-           <MotionBox
-    variants={fadeUp}
-    sx={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      mb: 4,
-      flexWrap: "wrap",
-      gap: 2,
-    }}
-  >
-    <Typography
-      sx={{
-        fontSize: "clamp(1.35rem, 1.5vw + 1rem, 2.25rem)",
-        fontWeight: 600,
-        bgcolor: "cyan",
-        px: { xs: 2.5, sm: 4 },
-        py: 0.5,
-        borderRadius: "50px",
-      }}
-    >
-      {service.heading}
-    </Typography>
-  </MotionBox>
+            <MotionBox
+              variants={fadeUp}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                mb: 4,
+                flexWrap: "wrap",
+                gap: 2,
 
-  <MotionBox variants={fadeUp}>
-    <Typography
-      variant="h3"
-      component="h1"
-      sx={{
-        fontWeight: 800,
-        mb: 3,
-        maxWidth: "900px",
-        fontSize: "clamp(1.4rem, 1.2vw + 1rem, 1.8rem)",
-        lineHeight: 1.15,
-        letterSpacing: "-0.02em",
-      }}
-    >
-      {service.title}
-    </Typography>
-  </MotionBox>
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "clamp(1.35rem, 1.5vw + 1rem, 2.25rem)",
+                  fontWeight: 600,
+                  bgcolor: "#3DCED4",
+                  px: { xs: 2.5, sm: 4 },
+                  py: 0.5,
+                  borderRadius: "50px",
+
+                }}
+              >
+                {service.heading}
+              </Typography>
+            </MotionBox>
+
+            <MotionBox variants={fadeUp}>
+              <Typography
+                variant="h3"
+                component="h1"
+                sx={{
+                  fontWeight: 800,
+                  mb: 3,
+                  maxWidth: "900px",
+                  fontSize: "clamp(1.4rem, 1.2vw + 1rem, 1.8rem)",
+                  lineHeight: 1.15,
+                  letterSpacing: "-0.02em",
+                  px: 6,
+                }}
+              >
+                {service.title}
+              </Typography>
+            </MotionBox>
 
             <MotionBox variants={fadeInUp}>
               <Typography
@@ -149,9 +145,10 @@ function Service_Details() {
                 sx={{
                   opacity: 0.9,
                   fontWeight: 300,
-                  maxWidth: "850px",
+                  maxWidth: "900px",
                   lineHeight: 1.7,
                   fontSize: { xs: "1rem", md: "1.15rem" },
+                  px: 6,
                 }}
                 className="text-justify"
                 dangerouslySetInnerHTML={{ __html: service.summery }}
@@ -162,8 +159,9 @@ function Service_Details() {
       </Box>
 
       <Container maxWidth="lg">
+
         {/* Key Objectives */}
-        {service.keys && service.keys.length > 0 && (
+        {service.keys?.length > 0 && (
           <Paper
             elevation={0}
             sx={{
@@ -171,74 +169,71 @@ function Service_Details() {
               mb: 4,
               borderRadius: 3,
               border: "1px solid #e2e8f0",
-            }}>
-            <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>
+            }}
+          >
+            <Typography variant="h5" fontWeight={700} mb={3}>
               Key Objectives
             </Typography>
-            <Box className='grid grid-cols-2 gap-2'>
+
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 380px), 1fr))",
+                gap: 3,
+              }}
+            >
               {service.keys.map((key, index) => {
-                const parts = key?.text?.split("–");
-                const title = parts[0]?.trim();
-                const desc = parts[1]?.trim();
+                const [title, desc] = key?.text?.split("–").map(v => v.trim()) || [];
 
                 return (
-                  <Grid item xs={12} md={6} key={index}>
-                    <MotionBox
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true, amount: 0.2 }}
-                      variants={cardPop}
-                    >
-                      <Stack
-                        direction="row"
-                        spacing={1.5}
-                        alignItems="flex-start"
-                        divider={<Divider orientation="vertical" flexItem />}
-                      >
-                        <MotionBox
-                          variants={ltr}
-                          sx={{
-                            color: "primary.main",
-                            mt: 0.5,
-                            display: "flex",
-                            alignItems: "center",
-                            /* FIX: Prevent container from shrinking on narrow screens */
-                            flexShrink: 0
-                          }}
-                        >
-                          <Box
-                            component="img"
-                            src={key?.icon}
-                            alt={title || "icon"}
-                            sx={{
-                              /* FIX: Set clear responsive size limits and object-fit */
-                              width: { xs: 40, sm: 50 },
-                              height: { xs: 40, sm: 50 },
-                              objectFit: "contain",
-                              display: "block"
-                            }}
-                          />
-                        </MotionBox>
-
-                        <MotionBox variants={rtl} sx={{ flexGrow: 1, minWidth: 0 }}>
-                          <Typography variant="h6" fontWeight="600">
-                            {title}
-                          </Typography>
-
-                          {desc && (
-                            <Typography
-                              variant="body2"
-                              sx={{ mt: 0.5 }}
-                              color="text.secondary"
-                            >
-                              {desc}
-                            </Typography>
-                          )}
-                        </MotionBox>
-                      </Stack>
+                  <MotionBox
+                    key={index}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={cardPop}
+                    sx={{
+                      display: "flex",
+                      gap: 1.5,
+                      alignItems: "flex-start",
+                      ...(service.keys.length % 2 !== 0 &&
+                        index === service.keys.length - 1 && {
+                        gridColumn: "1 / -1",
+                        width: "100%",
+                        justifySelf: "center",
+                        
+                      }),
+                    }}
+                  >
+                    <MotionBox variants={ltr} sx={{ flexShrink: 0, mt: 0.5 }}>
+                      <Box
+                        component="img"
+                        src={key?.icon}
+                        alt={title || "icon"}
+                        sx={{
+                          width: { xs: 40, sm: 50 },
+                          height: { xs: 40, sm: 50 },
+                          objectFit: "contain",
+                        }}
+                      />
                     </MotionBox>
-                  </Grid>
 
+                    <MotionBox variants={rtl} sx={{ minWidth: 0 }}>
+                      <Typography variant="h6" fontWeight={600}>
+                        {title}
+                      </Typography>
+
+                      {desc && (
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{ mt: 0.5, lineHeight: 1.7 }}
+                        >
+                          {desc}
+                        </Typography>
+                      )}
+                    </MotionBox>
+                  </MotionBox>
                 );
               })}
             </Box>
@@ -318,55 +313,170 @@ function Service_Details() {
         <Box sx={{ mb: 4, display: 'flex', flexDirection: "column", gap: 4, alignItems: 'stretch' }}>
 
           {/* What We Help Protect & Identify */}
+
           {itemsProtected && itemsProtected.length > 0 && (
-            <Box sx={{ flex: 1, width: '100%' }}>
+            <Box sx={{ width: "100%" }}>
               <Box
                 sx={{
-                  height: '100%',
-                  position: 'relative',
-                  borderRadius: 3,
-                  overflow: 'hidden',
+                  position: "relative",
+                  borderRadius: 4,
+                  overflow: "hidden",
                   backgroundImage: `url(${service?.whatweprotectImg})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  boxShadow: "0 12px 35px rgba(0,0,0,0.12)",
+                  "&::before": {
+                    content: '""',
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(120deg, rgba(5,20,35,0.92), rgba(5,30,45,0.78))",
+                  },
                 }}
               >
-                <Paper
-                  elevation={0}
+                <Box
                   sx={{
-                    py: { xs: 3, sm: 7 },
-                    px: { xs: 2, sm: 4 },
-                    height: '100%',
-                    borderRadius: 3,
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: '#ffffff',
-                    background: 'linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75))',
+                    position: "relative",
+                    zIndex: 1,
+                    py: { xs: 4, md: 6 },
+                    px: { xs: 2.5, sm: 4, md: 6 },
                   }}
                 >
-                  <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
-                    What We Help Protect & Identify
-                  </Typography>
-                  <Stack spacing={2.5}>
+                  {/* Section Heading */}
+                  <Box sx={{ mb: 4 }}>
+                    <Typography
+                      sx={{
+                        color: "#3DCED4",
+                        fontWeight: 700,
+                        fontSize: "0.9rem",
+                        letterSpacing: 2,
+                        textTransform: "uppercase",
+                        mb: 1.5,
+                      }}
+                    >
+                      Our Protection Focus
+                    </Typography>
+
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        color: "#fff",
+                        fontWeight: 800,
+                        fontSize: {
+                          xs: "1.65rem",
+                          sm: "2rem",
+                          md: "2.5rem",
+                        },
+                        lineHeight: 1.2,
+                        maxWidth: "750px",
+                      }}
+                    >
+                      What We Help Protect & Identify
+                    </Typography>
+
+                    <Box
+                      sx={{
+                        mt: 2,
+                        width: 75,
+                        height: 4,
+                        borderRadius: 5,
+                        bgcolor: "#3DCED4",
+                      }}
+                    />
+                  </Box>
+
+                  {/* Protection Items */}
+                  <Box
+                    sx={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))",
+                      gap: 2.5, "& > :last-child:nth-child(odd)": {
+                        gridColumn: "1 / -1",
+                      },
+                    }}
+                  >
                     {itemsProtected.map((item, idx) => (
-                      <Box key={idx}>
-                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#ffffff' }}>
-                          {item.title}
-                        </Typography>
-                        <Typography sx={{ color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.6, fontSize: "1.1rem" }}>
-                          {item.label}
-                        </Typography>
+                      <Box
+                        key={idx}
+                        sx={{
+                          p: { xs: 2, sm: 2.5 },
+                          borderRadius: 3,
+                          border: "1px solid rgba(255,255,255,0.18)",
+                          background: "rgba(255,255,255,0.08)",
+                          backdropFilter: "blur(8px)",
+                          transition: "all 0.3s ease",
+                          "&:hover": {
+                            background: "rgba(61,206,212,0.14)",
+                            borderColor: "#3DCED4",
+                            transform: "translateY(-4px)",
+                          },
+                        }}
+                      >
+                        <Stack
+                          direction="row"
+                          spacing={2}
+                          alignItems="flex-start"
+                        >
+                          <Box
+                            sx={{
+                              minWidth: 36,
+                              height: 36,
+                              borderRadius: "50%",
+                              bgcolor: "rgba(61,206,212,0.18)",
+                              color: "#3DCED4",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              fontWeight: 800,
+                              fontSize: "0.9rem",
+                            }}
+                          >
+                            {String(idx + 1).padStart(2, "0")}
+                          </Box>
+
+                          <Box sx={{ minWidth: 0 }}>
+                            <Typography
+                              variant="h6"
+                              sx={{
+                                color: "#fff",
+                                fontWeight: 700,
+                                fontSize: {
+                                  xs: "1.05rem",
+                                  md: "1.2rem",
+                                },
+                                mb: 1,
+                              }}
+                            >
+                              {item.title}
+                            </Typography>
+
+                            <Typography
+                              sx={{
+                                color: "rgba(255,255,255,0.82)",
+                                lineHeight: 1.8,
+                                fontSize: {
+                                  xs: "0.9rem",
+                                  md: "1rem",
+                                },
+                              }}
+                            >
+                              {item.label}
+                            </Typography>
+                          </Box>
+                        </Stack>
                       </Box>
                     ))}
-                  </Stack>
-                </Paper>
+                  </Box>
+                </Box>
               </Box>
             </Box>
           )}
 
+
           {/* Key Components & Technology */}
           {keyTechOrComponents && keyTechOrComponents.length > 0 && (
             <Box sx={{ flex: 1, width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>
+              <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
                 Key Components & Technology
               </Typography>
 
@@ -383,7 +493,7 @@ function Service_Details() {
                     transition: "all 0.2s ease-in-out",
                     "&:hover": {
                       color: "#1976D2",
-                      transform: "translateX(4px)",
+                      transform: "translateX(12px) scale(1.02)",
                     }
                   }}>
                     <TimelineSeparator>
@@ -391,12 +501,12 @@ function Service_Details() {
                       {idx < keyTechOrComponents.length - 1 && <TimelineConnector sx={{ bgcolor: 'divider' }} />}
                     </TimelineSeparator>
 
-                    <TimelineContent sx={{ py: '12px', px: 2 }}>
+                    <TimelineContent sx={{ py: '12px', px: 2, pt: 0 }}>
                       <Box sx={{ mb: 2, }}>
-                        <Typography variant="subtitle1" sx={{ fontWeight: 600, }}>
+                        <Typography variant="h6" sx={{ fontWeight: 600, }}>
                           {tech.title}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                        <Typography variant="inherit" color="text.secondary" sx={{ lineHeight: 1.6 }}>
                           {tech.label}
                         </Typography>
                       </Box>

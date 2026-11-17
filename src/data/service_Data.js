@@ -29,12 +29,12 @@ export const service_data = {
         text: "Detect Hidden Moisture – Use moisture meters to identify moisture levels that may not be visible.",
       },
       {
-        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786513807/S_mark/service/infra/Identify_thermal_inomalis_ankv4w.png",
-        text: "Identify Thermal Anomalies – Use thermal imaging to detect temperature variations associated with moisture, leakage, or building abnormalities.",
-      },
-      {
         icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786513805/S_mark/service/infra/support_preventive_maintence_v05794.png",
         text: "Support Preventive Maintenance – Provide actionable observations to help address infrastructure vulnerabilities.",
+      },
+      {
+        icon: "https://res.cloudinary.com/djc8opvcg/image/upload/v1786513807/S_mark/service/infra/Identify_thermal_inomalis_ankv4w.png",
+        text: "Identify Thermal Anomalies – Use thermal imaging to detect temperature variations associated with moisture, leakage, or building abnormalities.",
       },
     ],
     approach: [
