@@ -134,7 +134,7 @@ function ProductDetails() {
         </Container>
       </Box>
 
-      <Box component="section" sx={{ py: { xs: 6, md: 8 }, bgcolor: "#ffffff" }}>
+      <Box component="section" sx={{ py: 3, bgcolor: "#ffffff" }}>
         <Container maxWidth="lg">
           <Box
             sx={{

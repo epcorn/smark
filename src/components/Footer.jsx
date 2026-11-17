@@ -30,7 +30,7 @@ function Footer() {
 
           {/* Contact details & Address */}
           {(contact || email || address) && (
-            <div className="flex flex-col items-center md:items-end gap-4">
+            <div className="flex flex-col items-center md:items-start gap-4">
               
               {/* Call & Email Cards */}
               <address className="flex flex-col items-center gap-3 not-italic sm:flex-row sm:flex-wrap sm:justify-end sm:gap-4">
@@ -67,7 +67,7 @@ function Footer() {
 
               {/* Physical Address Line */}
               {address && (
-                <div className="flex items-center gap-2 text-xs text-slate-300 max-w-sm justify-center md:justify-end">
+                <div className="flex items-center gap-2 text-sm text-slate-300 justify-start">
                   <FaMapMarkerAlt className="text-[#3DCED4] shrink-0" size={14} />
                   <span>{address}</span>
                 </div>

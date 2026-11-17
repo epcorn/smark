@@ -100,46 +100,47 @@ function Service_Details() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}>
           <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-            <MotionBox
-              variants={fadeUp}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                mb: 4,
-                flexWrap: "wrap",
-                gap: 2,
-              }}>
-              <Chip
-                label={service.heading}
-                size="medium"
-                sx={{
-                  fontWeight: 700,
-                  px: 1.5,
-                  py: 0.5,
-                  letterSpacing: "0.5px",
-                  boxShadow: "0 4px 14px rgba(0,0,0,0.15)",
-                  backdropFilter: "blur(4px)",
-                }}
-                className="bg-[#3DCED4]!"
-              />
-            </MotionBox>
+           <MotionBox
+    variants={fadeUp}
+    sx={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      mb: 4,
+      flexWrap: "wrap",
+      gap: 2,
+    }}
+  >
+    <Typography
+      sx={{
+        fontSize: "clamp(1.35rem, 1.5vw + 1rem, 2.25rem)",
+        fontWeight: 600,
+        bgcolor: "cyan",
+        px: { xs: 2.5, sm: 4 },
+        py: 0.5,
+        borderRadius: "50px",
+      }}
+    >
+      {service.heading}
+    </Typography>
+  </MotionBox>
 
-            <MotionBox variants={fadeUp}>
-              <Typography
-                variant="h3"
-                component="h1"
-                sx={{
-                  fontWeight: 800,
-                  mb: 3,
-                  maxWidth: "900px",
-                  fontSize: { xs: "1.90rem", sm: "2.1rem", md: "2.2rem", lg: "2.4rem" },
-                  lineHeight: 1.15,
-                  letterSpacing: "-0.02em",
-                }}>
-                {service.title}
-              </Typography>
-            </MotionBox>
+  <MotionBox variants={fadeUp}>
+    <Typography
+      variant="h3"
+      component="h1"
+      sx={{
+        fontWeight: 800,
+        mb: 3,
+        maxWidth: "900px",
+        fontSize: "clamp(1.4rem, 1.2vw + 1rem, 1.8rem)",
+        lineHeight: 1.15,
+        letterSpacing: "-0.02em",
+      }}
+    >
+      {service.title}
+    </Typography>
+  </MotionBox>
 
             <MotionBox variants={fadeInUp}>
               <Typography
@@ -167,7 +168,7 @@ function Service_Details() {
             elevation={0}
             sx={{
               p: { xs: 3, md: 5 },
-              mb: 6,
+              mb: 4,
               borderRadius: 3,
               border: "1px solid #e2e8f0",
             }}>
@@ -246,68 +247,79 @@ function Service_Details() {
 
         {/* Process / Approach Section */}
         {service.approach && service.approach.length > 0 && (
-          <Box sx={{ mb: 8 }}>
+          <Box sx={{ mb: 4, width: '100%' }}>
             <Typography
               variant="h4"
               sx={{ fontWeight: 700, mb: 4, textAlign: "center" }}>
               Our Approach
             </Typography>
-            <motion.div
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}>
-              <Grid container spacing={3}>
-                {service.approach.map((step, index) => (
-                  <Grid item xs={12} sm={6} md={4} key={index}>
-                    <motion.div variants={cardPop} style={{ height: "100%" }}>
-                      <Card
-                        elevation={0}
+
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: '1fr',
+                gap: 3,
+                width: '100%',
+              }}
+            >
+              {service.approach.map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  style={{ height: "100%", display: "flex", flexDirection: "column" }}
+                >
+                  <Card
+                    elevation={0}
+                    sx={{
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      border: "1px solid #3DCED4",
+                      borderRadius: 3,
+                      transition: "transform 0.2s, box-shadow 0.2s",
+                      "&:hover": {
+                        transform: "translateY(-4px)",
+                        boxShadow: "0 10px 20px rgba(61, 206, 212, 0.3)",
+                      },
+                    }}>
+                    <CardContent sx={{ p: 3, flexGrow: 1 }}>
+                      <Typography
+                        variant="caption"
                         sx={{
-                          height: "100%",
-                          border: "1px solid #3DCED4",
-                          borderRadius: 3,
-                          transition: "transform 0.2s, box-shadow 0.2s",
-                          "&:hover": {
-                            transform: "translateY(-4px)",
-                            boxShadow: "0 10px 20px rgba(61, 206, 212, 0.3)",
-                          },
+                          color: "primary.main",
+                          fontWeight: 800,
+                          fontSize: "1rem",
                         }}>
-                        <CardContent sx={{ p: 3 }}>
-                          <Typography
-                            variant="caption"
-                            sx={{
-                              color: "primary.main",
-                              fontWeight: 800,
-                              fontSize: "1rem",
-                            }}>
-                            0{index + 1}
-                          </Typography>
-                          <Typography
-                            variant="h6"
-                            sx={{ fontWeight: 600, my: 1 }}>
-                            {step.title}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            color="text.secondary"
-                            sx={{ lineHeight: 1.6 }}>
-                            {step.label}
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  </Grid>
-                ))}
-              </Grid>
-            </motion.div>
+                        0{index + 1}
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        sx={{ fontWeight: 600, my: 1 }}>
+                        {step.title}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{ lineHeight: 1.6 }}>
+                        {step.label}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </Box>
           </Box>
         )}
 
         {/* Protection / Benefits & Technologies Section */}
-        <Grid container spacing={4} alignItems="stretch" sx={{ mb: 8 }}>
+        <Box sx={{ mb: 4, display: 'flex', flexDirection: "column", gap: 4, alignItems: 'stretch' }}>
+
+          {/* What We Help Protect & Identify */}
           {itemsProtected && itemsProtected.length > 0 && (
-            <Grid item xs={12} md={6} sx={{ width: "100%", }}>
+            <Box sx={{ flex: 1, width: '100%' }}>
               <Box
                 sx={{
                   height: '100%',
@@ -348,11 +360,12 @@ function Service_Details() {
                   </Stack>
                 </Paper>
               </Box>
-            </Grid>
+            </Box>
           )}
 
+          {/* Key Components & Technology */}
           {keyTechOrComponents && keyTechOrComponents.length > 0 && (
-            <>
+            <Box sx={{ flex: 1, width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>
                 Key Components & Technology
               </Typography>
@@ -361,19 +374,26 @@ function Service_Details() {
                 position="right"
                 sx={{
                   p: 0,
-                  '& .MuiTimelineItem-root:before': { flex: 0, p: 0 } // Removes default left spacing on desktop
+                  m: 0,
+                  '& .MuiTimelineItem-root:before': { flex: 0, p: 0 }
                 }}
               >
                 {keyTechOrComponents.map((tech, idx) => (
-                  <TimelineItem key={idx}>
+                  <TimelineItem key={idx} sx={{
+                    transition: "all 0.2s ease-in-out",
+                    "&:hover": {
+                      color: "#1976D2",
+                      transform: "translateX(4px)",
+                    }
+                  }}>
                     <TimelineSeparator>
                       <TimelineDot color="primary" variant="outlined" sx={{ width: 12, height: 12, borderWidth: 3 }} />
                       {idx < keyTechOrComponents.length - 1 && <TimelineConnector sx={{ bgcolor: 'divider' }} />}
                     </TimelineSeparator>
 
                     <TimelineContent sx={{ py: '12px', px: 2 }}>
-                      <Box sx={{ mb: 2 }}>
-                        <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'text.primary' }}>
+                      <Box sx={{ mb: 2, }}>
+                        <Typography variant="subtitle1" sx={{ fontWeight: 600, }}>
                           {tech.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
@@ -384,71 +404,75 @@ function Service_Details() {
                   </TimelineItem>
                 ))}
               </Timeline>
-            </>
+            </Box>
           )}
-        </Grid>
+        </Box>
 
         {/* Service Summary Callout */}
-        {service.whyService && (
-          <Paper
-            elevation={0}
-            sx={{
-              p: { xs: 4, md: 6 },
-              mb: 8,
-              borderRadius: 3,
-              bgcolor: "#eff6ff",
-              border: "1px solid #bfdbfe",
-            }}>
-            <Typography
-              variant="h5"
-              color="primary.dark"
-              sx={{ fontWeight: 700, mb: 2 }}>
-              {service.whyService.title}
-            </Typography>
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              sx={{ fontSize: "1.1rem", lineHeight: 1.7 }}>
-              {service.whyService.description}
-            </Typography>
-          </Paper>
-        )}
+        {
+          service.whyService && (
+            <Paper
+              elevation={0}
+              sx={{
+                p: { xs: 4, md: 6 },
+                mb: 4,
+                borderRadius: 3,
+                bgcolor: "#eff6ff",
+                border: "1px solid grey",
+              }}>
+              <Typography
+                variant="h5"
+                color="primary.dark"
+                sx={{ fontWeight: 700, mb: 2 }}>
+                {service.whyService.title}
+              </Typography>
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{ fontSize: "1.1rem", lineHeight: 1.7 }}>
+                {service.whyService.description}
+              </Typography>
+            </Paper>
+          )
+        }
 
         {/* CTA Banner */}
-        {service.cta && (
-          <Paper
-            elevation={0}
-            sx={{
-              p: { xs: 4, md: 6 },
-              borderRadius: 3,
-              bgcolor: "primary.main",
-              color: "primary.contrastText",
-              textAlign: "center",
-            }}>
-            <Typography
-              variant="h6"
+        {
+          service.cta && (
+            <Paper
+              elevation={0}
               sx={{
-                opacity: 0.9,
-                letterSpacing: 1,
-                textTransform: "uppercase",
-                mb: 1,
+                p: { xs: 4, md: 6 },
+                borderRadius: 3,
+                bgcolor: "primary.main",
+                color: "primary.contrastText",
+                textAlign: "center",
               }}>
-              {service.cta.tagline}
-            </Typography>
-            <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
-              {service.cta.headline}
-            </Typography>
-            <Button
-              variant="contained"
-              color="secondary"
-              size="large"
-              startIcon={<IoCall />}
-              sx={{ px: 4, py: 1.5, fontWeight: "bold", borderRadius: 2 }}>
-              <a href={`tel:+${home_page.contact}`}>Contact Us Now</a>
-            </Button>
-          </Paper>
-        )}
-      </Container>
+              <Typography
+                variant="h6"
+                sx={{
+                  opacity: 0.9,
+                  letterSpacing: 1,
+                  textTransform: "uppercase",
+                  mb: 1,
+                }}>
+                {service.cta.tagline}
+              </Typography>
+              <Typography variant="h4" sx={{ fontWeight: 700, mb: 3 }}>
+                {service.cta.headline}
+              </Typography>
+              <Button
+                variant="contained"
+                color="secondary"
+                size="large"
+                startIcon={<IoCall />}
+                sx={{ px: 4, py: 1.5, fontWeight: "bold", borderRadius: 2 }}>
+                <a href={`tel:+${home_page.contact}`}>Contact Us Now</a>
+              </Button>
+            </Paper>
+          )
+        }
+      </Container >
 
       {pdfUrl && (
         <>
@@ -478,8 +502,9 @@ function Service_Details() {
             </Button>
           </Box>
         </>
-      )}
-    </Box>
+      )
+      }
+    </Box >
   );
 }
 
