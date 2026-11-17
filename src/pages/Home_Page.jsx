@@ -205,7 +205,7 @@ function Home_Page() {
                           xs: "0.95rem",
                           md: "1.02rem",
                         },
-                        textAlign:"justify",
+                        textAlign: "justify",
                         lineHeight: 1.9,
                         mb: 2,
                         "&:last-child": {
@@ -383,20 +383,19 @@ function Home_Page() {
                         borderRadius: 3,
                         backfaceVisibility: "hidden",
                         WebkitBackfaceVisibility: "hidden",
-                        p: 3,
+                        p: {sm:2,md:3},
                         display: "flex",
                         flexDirection: "column",
                       }}
                     >
                       <Typography
-                        variant="h5"
-                        sx={{ fontWeight: 700, mb: 1, color: "#1E293B" }}
+                        sx={{ fontWeight: 700, mb: 1, color: "#1E293B", fontSize:{sm:"1rem",md:"1.25rem"} }}
                       >
                         {card.title}
                       </Typography>
                       <Typography
                         variant=""
-                        sx={{ color: "#334155", lineHeight: 1.6, fontSize:"1.1rem" }}
+                        sx={{ color: "#334155", lineHeight: 1.6, fontSize: { xs: "0.9rem", md: "1.1rem" } }}
                       >
                         {card.desc}
                       </Typography>
